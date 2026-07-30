@@ -1,0 +1,9 @@
+@import './fonts.css';
+@import './variables.css';
+@import './normalize.css';
+
+
+body {
+  background-color: var(--background);
+  font-family: 'Proxima Nova', sans-serif;
+}

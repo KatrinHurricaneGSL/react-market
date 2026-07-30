@@ -1,0 +1,179 @@
+.cart {
+    max-width: 820px;
+    margin: 90px auto;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 32px;
+}
+
+.title svg {
+    position: relative;
+    top: -2px;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.clear {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #b6b6b6;
+    cursor: pointer;
+    user-select: none;
+}
+
+.clear span {
+    margin-left: 7px;
+    color: inherit;
+    font-size: 18px;
+}
+
+.clear,
+.clear span,
+.clear svg {
+    transition: color .15s ease-in-out;
+}
+
+.clear:hover {
+    color: #373737;
+}
+
+.bottom {
+    margin: 50px 0;
+}
+
+.bottomDetails,
+.bottomButtons {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.bottomDetails span {
+    font-size: 22px;
+}
+
+.bottomDetails span:last-of-type b {
+    color: #fe5f1e;
+}
+
+.bottomButtons {
+    margin-top: 40px;
+}
+
+.goBack {
+    width: min(210px, 48%);
+    border-color: #ddd;
+}
+
+.goBack span {
+    color: #c3c3c3;
+    font-weight: 600;
+}
+
+.goBack:hover {
+    border-color: #111;
+    background-color: #111;
+}
+
+.goBack:hover span {
+    color: #f6f6f6;
+}
+
+.goBack svg {
+    margin-right: 12px;
+}
+
+.goBack svg path {
+    fill: transparent;
+}
+
+.pay {
+    width: min(210px, 48%);
+    padding: clamp(10px, 2vw, 16px);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    .cart {
+        margin: 60px 20px;
+    }
+}
+
+@media (max-width: 560px) {
+    .bottomButtons {
+        gap: 12px;
+    }
+
+    .goBack,
+    .pay {
+        width: auto;
+        flex: 1;
+    }
+
+    .goBack svg {
+        flex: 0 0 auto;
+        margin-right: 6px;
+    }
+}
+
+@media (max-width: 420px) {
+    .bottomButtons {
+        flex-direction: column-reverse;
+    }
+
+    .goBack,
+    .pay {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .cart {
+        margin: 0;
+    }
+
+    .clear span {
+        font-size: 14px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .bottomDetails span {
+        font-size: 18px;
+    }
+
+    .bottom {
+        margin: 24px 0 0;
+    }
+
+    .content {
+        padding: 30px 0;
+    }
+}
+
+@media (max-width: 468px) {
+    .bottomDetails span {
+        font-size: 14px;
+    }
+
+    .title {
+        font-size: 14px;
+    }
+}
