@@ -1,20 +1,18 @@
-import React from 'react';
 import style from "./ProductBlock.module.css"
 import ContentLoader from 'react-content-loader';
 
 export const Skeleton = () => (
   <ContentLoader
-    className={style.productBlock}
+    className={style.skeleton}
     speed={2}
     width={280}
-    height={500}
-    viewBox="0 0 280 500"
+    height={400}
+    viewBox="0 0 280 400"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb">
-    <circle cx="134" cy="136" r="125" />
-    <rect x="0" y="279" rx="10" ry="10" width="280" height="23" />
-    <rect x="0" y="326" rx="10" ry="10" width="280" height="88" />
-    <rect x="0" y="436" rx="10" ry="10" width="95" height="30" />
-    <rect x="125" y="427" rx="24" ry="24" width="152" height="45" />
+    <rect x="0" y="0" width="280" height="280" />
+    <rect x="0" y="290" rx="8" ry="8" width="280" height="24" />
+    <rect x="0" y="363" rx="8" ry="8" width="105" height="27" />
+    <rect x="128" y="354" rx="24" ry="24" width="152" height="45" />
   </ContentLoader>
 );

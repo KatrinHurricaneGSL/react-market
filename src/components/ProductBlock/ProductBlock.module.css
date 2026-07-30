@@ -9,6 +9,11 @@
     text-align: center;
 }
 
+.skeleton {
+    justify-self: center;
+    margin-bottom: 65px;
+}
+
 .image {
     width: 280px;
     aspect-ratio: 1 / 1;
@@ -17,10 +22,12 @@
 }
 
 .title {
+    min-height: 48px;
     margin-top: 10px;
     margin-bottom: 20px;
     font-size: 20px;
     font-weight: 900;
+    line-height: 24px;
     letter-spacing: .01em;
 }
 

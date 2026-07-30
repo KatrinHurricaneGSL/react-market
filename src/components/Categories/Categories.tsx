@@ -1,13 +1,5 @@
+import { categories } from "../../shared/constants/categories"
 import style from "./Categories.module.css"
-
-const categories = [
-    'Все',
-    'Электроника',
-    'Одежда',
-    'Красота',
-    'Дом и сад',
-    'Товары для детей'
-]
 
 export function Categories({ value, onChangeCategory }) {
 
@@ -15,13 +7,13 @@ export function Categories({ value, onChangeCategory }) {
         <div className={style.categories}>
             <ul className={style.list}>
                 {
-                    categories.map((category, index) => (
+                    categories.map((category) => (
                         <li
-                            key={index}
-                            onClick={() => onChangeCategory(index)}
-                            className={`${style.item} ${value === index ? style.active : ""}`}
+                            key={category.id}
+                            onClick={() => onChangeCategory(category.id)}
+                            className={`${style.item} ${value === category.id ? style.active : ""}`}
                         >
-                            {category}
+                            {category.title}
                         </li>
                     ))
                 }

@@ -10,6 +10,7 @@ import { ContentItems } from '../components/ContentItems';
 import { Pagination } from '../components/Pagination';
 import { SearchContext } from "../App"
 import { setCategotyId } from '../redux/slices/filterSlice';
+import { categories } from '../shared/constants/categories';
 
 interface ProductType {
     id: string,
@@ -76,6 +77,8 @@ export const Home = () => {
             });
     }, [categoryId, page, sortType, searchValue])
 
+    const activeCategory = categories.find((category) => category.id === categoryId)
+
     return (
         <>
             <div className={style.contentTop}>
@@ -83,7 +86,9 @@ export const Home = () => {
                 <Sort />
             </div>
             <h2 className={style.contentTitle}>
-                Все товары
+                {
+                    activeCategory?.title || "Все товары"
+                }
             </h2>
             <ContentItems>
                 {isLoading
