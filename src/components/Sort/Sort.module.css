@@ -20,8 +20,8 @@
 
 
 .sortLabel span {
-    color: #fe5f1e;
-    border-bottom: 1px dashed #fe5f1e;
+    color: #f71923;
+    border-bottom: 1px dashed #f71923;
     cursor: pointer;
 }
 
@@ -55,14 +55,14 @@
 
 
 .item:hover {
-    background: rgba(254, 95, 30, 0.05);
+    background: rgba(247, 25, 35, 0.05);
 }
 
 
 .active {
-    background: rgba(254, 95, 30, 0.05);
+    background: rgba(247, 25, 35, 0.05);
     font-weight: bold;
-    color: #fe5f1e;
+    color: #f71923;
 }
 
 @media (max-width: 1273px) {

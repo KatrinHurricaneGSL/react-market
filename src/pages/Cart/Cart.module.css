@@ -59,15 +59,12 @@
 .bottomButtons {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 16px;
 }
 
 .bottomDetails span {
     font-size: 22px;
-}
-
-.bottomDetails span:last-of-type b {
-    color: #fe5f1e;
 }
 
 .bottomButtons {

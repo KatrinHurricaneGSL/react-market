@@ -9,7 +9,7 @@ export function NotFoundBlock() {
                 Ничего не найдено
             </h1>
 
-            <p className={styles.description}>Данная страница отсутсвует в нашем интернет-магазине</p>
+            <p className={styles.description}>Данная страница отсутсвует на маркетплейсе</p>
         </div>
     )
 }

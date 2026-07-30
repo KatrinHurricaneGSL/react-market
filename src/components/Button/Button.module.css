@@ -11,7 +11,7 @@
     padding: var(--button-block-padding) var(--button-inline-padding);
     border: 1px solid transparent;
     border-radius: 30px;
-    background-color: #fe5f1e;
+    background-color: #f71923;
     color: #fff;
     font-size: var(--button-font-size);
     line-height: 1.25;
@@ -33,26 +33,26 @@
 }
 
 .button:hover {
-    background-color: #e94d10;
+    background-color: #f71923;
 }
 
 .button:active {
-    background-color: #de4101;
+    background-color: #f71923;
     transform: translateY(1px);
 }
 
 .outline {
-    border-color: #fe5f1e;
+    border-color: #f71923;
     background-color: #fff;
-    color: #fe5f1e;
+    color: #f71923;
 }
 
 .outline svg path {
-    fill: #fe5f1e;
+    fill: #f71923;
 }
 
 .outline:hover {
-    background-color: #fe5f1e;
+    background-color: #f71923;
     color: #fff;
 }
 
@@ -90,7 +90,7 @@
     width: clamp(19px, 2.75vw, 22px);
     height: clamp(19px, 2.75vw, 22px);
     border-radius: 30px;
-    background-color: #fe5f1e;
+    background-color: #f71923;
     color: #fff;
     font-size: clamp(11px, 1.5vw, 13px);
     font-style: normal;
@@ -100,7 +100,7 @@
 
 .add:hover i {
     background-color: #fff;
-    color: #fe5f1e;
+    color: #f71923;
 }
 
 .cart {

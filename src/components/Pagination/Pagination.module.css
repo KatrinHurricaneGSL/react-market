@@ -1,0 +1,7 @@
+.pagination {
+    --pagination-color: #232323;
+    --pagination-hover-color: #232323;
+    --pagination-active-color: #f71923;
+    --pagination-active-bg: #fff;
+    --pagination-active-border-color: #f71923;
+}
