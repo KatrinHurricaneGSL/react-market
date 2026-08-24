@@ -10,8 +10,9 @@ import { Skeleton } from '../components/ProductBlock/Skeleton';
 import { ContentItems } from '../components/ContentItems';
 import { Pagination } from '../components/Pagination';
 import { SearchContext } from "../App"
-import { setCategotyId, setCurrentPage } from '../redux/slices/filterSlice';
+import { setCategotyId, setCurrentPage, setSort } from '../redux/slices/filterSlice';
 import { categories } from '../shared/constants/categories';
+import { useSearchParams } from 'react-router';
 
 interface ProductType {
     id: string,
@@ -38,7 +39,9 @@ export const Home = () => {
     const dispatch = useDispatch()
     const { categoryId, sortType, currentPage } = useSelector((state) => state.filter);
 
-    const { searchValue } = useContext(SearchContext)
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const { searchValue, setSearchValue } = useContext(SearchContext)
 
     const [items, setItems] = useState<PaginationData>({
         first: 1,
@@ -50,6 +53,7 @@ export const Home = () => {
         data: []
     })
     const [isLoading, setIsLoading] = useState(true)
+    const [isFiltersInitialized, setIsFiltersInitialized] = useState(false)
 
     const onClickCategory = id => {
         dispatch(setCategotyId(id))
@@ -60,21 +64,68 @@ export const Home = () => {
     }
 
     useEffect(() => {
-        getProducts()
-    }, [categoryId, currentPage, sortType, searchValue])
+        const categoryIdFromUrl = Number(searchParams.get("category") ?? searchParams.get("category:eq"))
+        const currentPageFromUrl = Number(searchParams.get("page") ?? searchParams.get("_page"))
+        const sortTypeFromUrl = searchParams.get("sort") ?? searchParams.get("_sort")
+        const searchValueFromUrl = searchParams.get("search") ?? searchParams.get("title:contains")
 
-    async function getProducts() {
+        if (Number.isInteger(categoryIdFromUrl) && categoryIdFromUrl >= 0) {
+            dispatch(setCategotyId(categoryIdFromUrl))
+        }
+
+        if (Number.isInteger(currentPageFromUrl) && currentPageFromUrl > 0) {
+            dispatch(setCurrentPage(currentPageFromUrl))
+        }
+
+        if (sortTypeFromUrl) {
+            dispatch(setSort(sortTypeFromUrl))
+        }
+
+        if (searchValueFromUrl) {
+            setSearchValue(searchValueFromUrl)
+        }
+
+        setIsFiltersInitialized(true)
+    }, [])
+
+    useEffect(() => {
+        if (!isFiltersInitialized) {
+            return
+        }
+
+        const queryParams = new URLSearchParams({
+            category: String(categoryId),
+            page: String(currentPage),
+            sort: sortType,
+            search: searchValue.trim()
+        })
+
+        setSearchParams(queryParams, { replace: true })
+        getProducts(queryParams)
+    }, [categoryId, currentPage, sortType, searchValue, isFiltersInitialized])
+
+    async function getProducts(queryParams: URLSearchParams) {
         try {
             setIsLoading(true)
-            const response = await axios.get("http://localhost:3000/products", {
-                params: {
-                    "category:eq": categoryId > 0 ? categoryId : undefined,
-                    _sort: sortType,
-                    "title:contains": searchValue.trim(),
-                    _page: currentPage,
-                    _per_page: 8
-                }
+            const apiParams = new URLSearchParams({
+                _sort: queryParams.get("sort") ?? "-rating",
+                _page: queryParams.get("page") ?? "1",
+                _per_page: "8"
             })
+            const categoryIdFromUrl = Number(queryParams.get("category"))
+            const searchValueFromUrl = queryParams.get("search")?.trim()
+
+            if (categoryIdFromUrl > 0) {
+                apiParams.set("category:eq", String(categoryIdFromUrl))
+            }
+
+            if (searchValueFromUrl) {
+                apiParams.set("title:contains", searchValueFromUrl)
+            }
+
+            const response = await axios.get(
+                `http://localhost:3000/products?${apiParams.toString()}`
+            )
             setItems(response.data)
         } catch (error) {
             console.log(error)
