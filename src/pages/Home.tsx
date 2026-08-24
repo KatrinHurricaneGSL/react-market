@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import { useSelector, useDispatch } from "react-redux"
+import axios from "axios"
 
 import style from '../App.module.css';
 import { Categories } from '../components/Categories';
@@ -9,7 +10,7 @@ import { Skeleton } from '../components/ProductBlock/Skeleton';
 import { ContentItems } from '../components/ContentItems';
 import { Pagination } from '../components/Pagination';
 import { SearchContext } from "../App"
-import { setCategotyId } from '../redux/slices/filterSlice';
+import { setCategotyId, setCurrentPage } from '../redux/slices/filterSlice';
 import { categories } from '../shared/constants/categories';
 
 interface ProductType {
@@ -35,7 +36,7 @@ interface PaginationData {
 
 export const Home = () => {
     const dispatch = useDispatch()
-    const { categoryId, sortType } = useSelector((state) => state.filter);
+    const { categoryId, sortType, currentPage } = useSelector((state) => state.filter);
 
     const { searchValue } = useContext(SearchContext)
 
@@ -50,32 +51,37 @@ export const Home = () => {
     })
     const [isLoading, setIsLoading] = useState(true)
 
-    const [page, setPage] = useState(1)
-
-    const onClickCategory = (id) => {
+    const onClickCategory = id => {
         dispatch(setCategotyId(id))
     }
 
-    useEffect(() => {
-        setIsLoading(true)
+    const onChangePage = number => {
+        dispatch(setCurrentPage(number))
+    }
 
-        let queryStr = ""
-        let searchQueryStr = ""
-        if (categoryId > 0) {
-            queryStr = "category:eq=" + categoryId
-        }
-        if (searchValue.trim()) {
-            searchQueryStr = "&title:contains=" + encodeURIComponent(searchValue.trim())
-        }
-        fetch("http://localhost:3000/products?" + queryStr + "&_sort=" + sortType + searchQueryStr + `&_page=${page}&_per_page=8`)
-            .then((res) => {
-                return res.json();
+    useEffect(() => {
+        getProducts()
+    }, [categoryId, currentPage, sortType, searchValue])
+
+    async function getProducts() {
+        try {
+            setIsLoading(true)
+            const response = await axios.get("http://localhost:3000/products", {
+                params: {
+                    "category:eq": categoryId > 0 ? categoryId : undefined,
+                    _sort: sortType,
+                    "title:contains": searchValue.trim(),
+                    _page: currentPage,
+                    _per_page: 8
+                }
             })
-            .then((arr) => {
-                setItems(arr)
-                setIsLoading(false)
-            });
-    }, [categoryId, page, sortType, searchValue])
+            setItems(response.data)
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setIsLoading(false)
+        }
+    }
 
     const activeCategory = categories.find((category) => category.id === categoryId)
 
@@ -97,9 +103,9 @@ export const Home = () => {
                 }
             </ContentItems>
             <Pagination
-                current={page}
+                current={currentPage}
                 total={items.pages}
-                onPageChange={(pageNumber) => { setPage(pageNumber) }}
+                onPageChange={onChangePage}
             />
         </>
     )

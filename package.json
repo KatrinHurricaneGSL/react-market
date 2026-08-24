@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.12.0",
+    "axios": "^1.19.0",
     "json-server": "^1.0.0-beta.15",
+    "lodash.debounce": "^4.0.8",
     "lucide-react": "^1.27.0",
     "react": "^19.2.6",
     "react-content-loader": "^7.1.2",
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

@@ -25,9 +25,9 @@ export function ProductBlock({ title, price, imageUrl, }) {
                             Добавить
                         </span>
 
-                        <i>
+                        {/*<i>
                             0
-                        </i>
+                        </i>*/}
                     </Button>
                 </div>
             </div>
