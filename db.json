@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 1,
-      "imageUrl": "https://placehold.co/584x584?text=iPhone",
+      "imageUrl": "/images/iphone.jpg",
       "title": "Смартфон iPhone 15",
       "price": 79990,
       "category": 1,
@@ -10,7 +10,7 @@
     },
     {
       "id": 2,
-      "imageUrl": "https://placehold.co/584x584?text=Notebook",
+      "imageUrl": "/images/noutbuk_lenovo_ideapad.jpg",
       "title": "Ноутбук Lenovo IdeaPad",
       "price": 64990,
       "category": 1,
@@ -18,7 +18,7 @@
     },
     {
       "id": 3,
-      "imageUrl": "https://placehold.co/584x584?text=Headphones",
+      "imageUrl": "/images/two_wire_headphones.jpg",
       "title": "Беспроводные наушники",
       "price": 4990,
       "category": 1,
@@ -26,7 +26,7 @@
     },
     {
       "id": 4,
-      "imageUrl": "https://placehold.co/584x584?text=Watch",
+      "imageUrl": "/images/xiaomi_smart_watches.jpg",
       "title": "Умные часы Xiaomi",
       "price": 8990,
       "category": 1,
@@ -34,7 +34,7 @@
     },
     {
       "id": 5,
-      "imageUrl": "https://placehold.co/584x584?text=Keyboard",
+      "imageUrl": "/images/gaming_keyboard.webp",
       "title": "Игровая клавиатура",
       "price": 5990,
       "category": 1,
@@ -42,7 +42,7 @@
     },
     {
       "id": 6,
-      "imageUrl": "https://placehold.co/584x584?text=Mouse",
+      "imageUrl": "/images/computer_mouse.webp",
       "title": "Беспроводная мышь",
       "price": 2990,
       "category": 1,
@@ -50,7 +50,7 @@
     },
     {
       "id": 7,
-      "imageUrl": "https://placehold.co/584x584?text=Monitor",
+      "imageUrl": "/images/computer_monitor.webp",
       "title": "Монитор 27 дюймов",
       "price": 23990,
       "category": 1,
@@ -58,7 +58,7 @@
     },
     {
       "id": 8,
-      "imageUrl": "https://placehold.co/584x584?text=Camera",
+      "imageUrl": "/images/action_camera.jpg",
       "title": "Экшн-камера",
       "price": 15990,
       "category": 1,
@@ -66,7 +66,7 @@
     },
     {
       "id": 9,
-      "imageUrl": "https://placehold.co/584x584?text=Tablet",
+      "imageUrl": "/images/samsung_tablet.webp",
       "title": "Планшет Samsung",
       "price": 32990,
       "category": 1,
@@ -74,7 +74,7 @@
     },
     {
       "id": 10,
-      "imageUrl": "https://placehold.co/584x584?text=Speaker",
+      "imageUrl": "/images/portable_speaker.jpg",
       "title": "Портативная колонка",
       "price": 6990,
       "category": 1,
@@ -82,7 +82,7 @@
     },
     {
       "id": 11,
-      "imageUrl": "https://placehold.co/584x584?text=Tshirt",
+      "imageUrl": "/images/T-shirt.webp",
       "title": "Футболка базовая",
       "price": 1490,
       "category": 2,
@@ -90,7 +90,7 @@
     },
     {
       "id": 12,
-      "imageUrl": "https://placehold.co/584x584?text=Jeans",
+      "imageUrl": "/images/jeans.jpg",
       "title": "Джинсы классические",
       "price": 3990,
       "category": 2,
@@ -98,7 +98,7 @@
     },
     {
       "id": 13,
-      "imageUrl": "https://placehold.co/584x584?text=Sneakers",
+      "imageUrl": "/images/sneakers.webp",
       "title": "Кроссовки спортивные",
       "price": 6990,
       "category": 2,
@@ -106,7 +106,7 @@
     },
     {
       "id": 14,
-      "imageUrl": "https://placehold.co/584x584?text=Jacket",
+      "imageUrl": "/images/demi_season_jacket.jpg",
       "title": "Куртка демисезонная",
       "price": 8990,
       "category": 2,
@@ -114,7 +114,7 @@
     },
     {
       "id": 15,
-      "imageUrl": "https://placehold.co/584x584?text=Hoodie",
+      "imageUrl": "/images/oversized_hoodie.webp",
       "title": "Худи оверсайз",
       "price": 3490,
       "category": 2,
@@ -122,7 +122,7 @@
     },
     {
       "id": 16,
-      "imageUrl": "https://placehold.co/584x584?text=Dress",
+      "imageUrl": "/images/dress.jpg",
       "title": "Женское платье",
       "price": 4590,
       "category": 2,
@@ -130,7 +130,7 @@
     },
     {
       "id": 17,
-      "imageUrl": "https://placehold.co/584x584?text=Cap",
+      "imageUrl": "/images/baseball_cap.jpeg",
       "title": "Бейсболка",
       "price": 990,
       "category": 2,
@@ -138,7 +138,7 @@
     },
     {
       "id": 18,
-      "imageUrl": "https://placehold.co/584x584?text=Socks",
+      "imageUrl": "/images/socks.webp",
       "title": "Набор носков",
       "price": 790,
       "category": 2,
@@ -146,7 +146,7 @@
     },
     {
       "id": 19,
-      "imageUrl": "https://placehold.co/584x584?text=Boots",
+      "imageUrl": "/images/winter_boots.jpg",
       "title": "Зимние ботинки",
       "price": 9990,
       "category": 2,
@@ -154,7 +154,7 @@
     },
     {
       "id": 20,
-      "imageUrl": "https://placehold.co/584x584?text=Backpack",
+      "imageUrl": "/images/urban_backpack.jpg",
       "title": "Городской рюкзак",
       "price": 2990,
       "category": 2,
@@ -162,7 +162,7 @@
     },
     {
       "id": 21,
-      "imageUrl": "https://placehold.co/584x584?text=Perfume",
+      "imageUrl": "/images/perfume_water.jpg",
       "title": "Парфюмерная вода",
       "price": 5990,
       "category": 3,
@@ -170,7 +170,7 @@
     },
     {
       "id": 22,
-      "imageUrl": "https://placehold.co/584x584?text=Cream",
+      "imageUrl": "/images/moisturizing_cream.jpg",
       "title": "Увлажняющий крем",
       "price": 1290,
       "category": 3,
@@ -178,7 +178,7 @@
     },
     {
       "id": 23,
-      "imageUrl": "https://placehold.co/584x584?text=Shampoo",
+      "imageUrl": "/images/shampoo_for_hair.webp",
       "title": "Шампунь для волос",
       "price": 890,
       "category": 3,
@@ -186,7 +186,7 @@
     },
     {
       "id": 24,
-      "imageUrl": "https://placehold.co/584x584?text=Lipstick",
+      "imageUrl": "/images/matte_lipstick.webp",
       "title": "Матовая помада",
       "price": 1590,
       "category": 3,
@@ -194,7 +194,7 @@
     },
     {
       "id": 25,
-      "imageUrl": "https://placehold.co/584x584?text=Mask",
+      "imageUrl": "/images/face_mask.jpg",
       "title": "Маска для лица",
       "price": 490,
       "category": 3,
@@ -202,7 +202,7 @@
     },
     {
       "id": 26,
-      "imageUrl": "https://placehold.co/584x584?text=Hairdryer",
+      "imageUrl": "/images/fan.jpg",
       "title": "Фен для волос",
       "price": 3990,
       "category": 3,
@@ -210,7 +210,7 @@
     },
     {
       "id": 27,
-      "imageUrl": "https://placehold.co/584x584?text=Brush",
+      "imageUrl": "/images/electric_brush.jpg",
       "title": "Электрическая щетка",
       "price": 2990,
       "category": 3,
@@ -218,7 +218,7 @@
     },
     {
       "id": 28,
-      "imageUrl": "https://placehold.co/584x584?text=Serum",
+      "imageUrl": "/images/facial_serum.webp",
       "title": "Сыворотка для лица",
       "price": 2190,
       "category": 3,
@@ -226,7 +226,7 @@
     },
     {
       "id": 29,
-      "imageUrl": "https://placehold.co/584x584?text=Nail",
+      "imageUrl": "/images/manicure_set.jpg",
       "title": "Маникюрный набор",
       "price": 1490,
       "category": 3,
@@ -234,7 +234,7 @@
     },
     {
       "id": 30,
-      "imageUrl": "https://placehold.co/584x584?text=Mirror",
+      "imageUrl": "/images/cosmetic_mirror.webp",
       "title": "Косметическое зеркало",
       "price": 2490,
       "category": 3,
@@ -242,7 +242,7 @@
     },
     {
       "id": 31,
-      "imageUrl": "https://placehold.co/584x584?text=Chair",
+      "imageUrl": "/images/armchair_for_home.jpeg",
       "title": "Кресло для дома",
       "price": 12990,
       "category": 4,
@@ -250,7 +250,7 @@
     },
     {
       "id": 32,
-      "imageUrl": "https://placehold.co/584x584?text=Table",
+      "imageUrl": "/images/coffee_table.jpeg",
       "title": "Журнальный столик",
       "price": 7990,
       "category": 4,
@@ -258,7 +258,7 @@
     },
     {
       "id": 33,
-      "imageUrl": "https://placehold.co/584x584?text=Lamp",
+      "imageUrl": "/images/table_lamp.jpg",
       "title": "Настольная лампа",
       "price": 1990,
       "category": 4,
@@ -266,7 +266,7 @@
     },
     {
       "id": 34,
-      "imageUrl": "https://placehold.co/584x584?text=Vacuum",
+      "imageUrl": "/images/vertical_vacuum_cleaner.webp",
       "title": "Вертикальный пылесос",
       "price": 15990,
       "category": 4,
@@ -274,7 +274,7 @@
     },
     {
       "id": 35,
-      "imageUrl": "https://placehold.co/584x584?text=Dishes",
+      "imageUrl": "/images/a_set_of_dishes.jpg",
       "title": "Набор посуды",
       "price": 4990,
       "category": 4,
@@ -282,7 +282,7 @@
     },
     {
       "id": 36,
-      "imageUrl": "https://placehold.co/584x584?text=Pillow",
+      "imageUrl": "/images/orthopedic_pillow.jpg",
       "title": "Ортопедическая подушка",
       "price": 2490,
       "category": 4,
@@ -290,7 +290,7 @@
     },
     {
       "id": 37,
-      "imageUrl": "https://placehold.co/584x584?text=Pan",
+      "imageUrl": "/images/nonstick_frying_pan.webp",
       "title": "Сковорода с антипригарным покрытием",
       "price": 2990,
       "category": 4,
@@ -298,7 +298,7 @@
     },
     {
       "id": 38,
-      "imageUrl": "https://placehold.co/584x584?text=Plant",
+      "imageUrl": "/images/indoor_plant.webp",
       "title": "Комнатное растение",
       "price": 990,
       "category": 4,
@@ -306,7 +306,7 @@
     },
     {
       "id": 39,
-      "imageUrl": "https://placehold.co/584x584?text=Blanket",
+      "imageUrl": "/images/soft_plaid.webp",
       "title": "Мягкий плед",
       "price": 1790,
       "category": 4,
@@ -314,7 +314,7 @@
     },
     {
       "id": 40,
-      "imageUrl": "https://placehold.co/584x584?text=Organizer",
+      "imageUrl": "/images/storage_organizer.webp",
       "title": "Органайзер для хранения",
       "price": 690,
       "category": 4,
@@ -322,7 +322,7 @@
     },
     {
       "id": 41,
-      "imageUrl": "https://placehold.co/584x584?text=Toy",
+      "imageUrl": "/images/educational_toy.jpg",
       "title": "Развивающая игрушка",
       "price": 1290,
       "category": 5,
@@ -330,7 +330,7 @@
     },
     {
       "id": 42,
-      "imageUrl": "https://placehold.co/584x584?text=Lego",
+      "imageUrl": "/images/construction_kit_for_children.webp",
       "title": "Конструктор для детей",
       "price": 3490,
       "category": 5,
@@ -338,7 +338,7 @@
     },
     {
       "id": 43,
-      "imageUrl": "https://placehold.co/584x584?text=Book",
+      "imageUrl": "/images/book.webp",
       "title": "Детская книга",
       "price": 790,
       "category": 5,
@@ -346,7 +346,7 @@
     },
     {
       "id": 44,
-      "imageUrl": "https://placehold.co/584x584?text=Car",
+      "imageUrl": "/images/toy_car.webp",
       "title": "Игрушечная машинка",
       "price": 990,
       "category": 5,
@@ -354,7 +354,7 @@
     },
     {
       "id": 45,
-      "imageUrl": "https://placehold.co/584x584?text=Doll",
+      "imageUrl": "/images/doll.webp",
       "title": "Кукла для девочек",
       "price": 1590,
       "category": 5,
@@ -362,7 +362,7 @@
     },
     {
       "id": 46,
-      "imageUrl": "https://placehold.co/584x584?text=Backpack",
+      "imageUrl": "/images/children's_backpack.webp",
       "title": "Детский рюкзак",
       "price": 2490,
       "category": 5,
@@ -370,7 +370,7 @@
     },
     {
       "id": 47,
-      "imageUrl": "https://placehold.co/584x584?text=Puzzle",
+      "imageUrl": "/images/puzzle.jpg",
       "title": "Пазл для детей",
       "price": 590,
       "category": 5,
@@ -378,7 +378,7 @@
     },
     {
       "id": 48,
-      "imageUrl": "https://placehold.co/584x584?text=Bicycle",
+      "imageUrl": "/images/children's_bike.jpeg",
       "title": "Детский велосипед",
       "price": 8990,
       "category": 5,
@@ -386,7 +386,7 @@
     },
     {
       "id": 49,
-      "imageUrl": "https://placehold.co/584x584?text=Clothes",
+      "imageUrl": "/images/children's_tracksuit.jpg",
       "title": "Детский спортивный костюм",
       "price": 2990,
       "category": 5,
@@ -394,7 +394,7 @@
     },
     {
       "id": 50,
-      "imageUrl": "https://placehold.co/584x584?text=TableGame",
+      "imageUrl": "/images/board_game.jpg",
       "title": "Настольная игра",
       "price": 1990,
       "category": 5,

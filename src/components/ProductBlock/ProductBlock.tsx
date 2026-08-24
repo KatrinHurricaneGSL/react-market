@@ -17,7 +17,7 @@ export function ProductBlock({ title, price, imageUrl, }) {
 
                 <div className={styles.footer}>
                     <div className={styles.price}>
-                        от {price} ₽
+                        {price} ₽
                     </div>
 
                     <Button variants={["outline", "add"]}>

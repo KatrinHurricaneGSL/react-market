@@ -69,6 +69,7 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
+    padding-left: 12px;
 }
 
 .price {
