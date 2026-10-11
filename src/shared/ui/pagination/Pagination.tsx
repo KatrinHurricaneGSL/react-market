@@ -3,7 +3,13 @@ import 'react-responsive-pagination/themes/classic.css';
 
 import styles from "./Pagination.module.css"
 
-export function Pagination( {current, total, onPageChange} ) {
+interface PaginationProps {
+    current: number;
+    total: number;
+    onPageChange: (page: number) => void;
+}
+
+export function Pagination({ current, total, onPageChange }: PaginationProps) {
     return (
         <div className={styles.pagination}>
             <ResponsivePagination

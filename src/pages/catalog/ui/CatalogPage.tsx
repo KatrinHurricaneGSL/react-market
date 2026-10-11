@@ -70,7 +70,11 @@ export const CatalogPage = () => {
     return (
         <>
             <div className={styles.contentTop}>
-                <Categories value={categoryId} onChangeCategory={(id) => onClickCategory(id)} />
+                <Categories
+                    value={categoryId}
+                    onChangeCategory={onClickCategory}
+                />
+
                 <Sort />
             </div>
 

@@ -1,8 +1,11 @@
-export interface ProductType {
-    id: number,
+export interface BaseProduct {
     imageUrl: string,
     title: string,
     price: number,
+}
+
+export interface ProductType extends BaseProduct {
+    id: number,
     category: number,
     rating: number
 }

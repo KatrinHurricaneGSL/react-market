@@ -3,33 +3,42 @@ import debounce from 'lodash.debounce'
 
 import { SearchContext } from "../../model/searchContext"
 import styles from "./Search.module.css"
-import { useCallback, useContext, useRef, useState } from 'react'
+import { useMemo, useContext, useRef, useState, useEffect } from 'react'
+
+import type { ChangeEvent } from 'react'
 
 export function Search() {
-    const { setSearchValue } = useContext(SearchContext)
+    const { setSearchValue } = useContext(SearchContext);
 
-    const [inputValue, setInputValue] = useState("")
+    const [inputValue, setInputValue] = useState("");
 
-    const inputRef = useRef(null)
+    const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleDeleteClick = () => {
-        setSearchValue("")
-        setInputValue("")
-        inputRef.current?.focus()
-    }
-
-    const debouncedSearch = useCallback(
-        debounce((value) => {
-            setSearchValue(value)
+    const debouncedSearch = useMemo(
+        () => debounce((value: string) => {
+            setSearchValue(value);
 
         }, 250),
-        []
-    )
+        [setSearchValue],
+    );
 
-    const onInputChange = (event) => {
-        setInputValue(event.target.value)
-        debouncedSearch(event.target.value)
-    }
+    const handleDeleteClick = () => {
+        debouncedSearch.cancel();
+        setSearchValue("");
+        setInputValue("");
+        inputRef.current?.focus();
+    };
+
+    useEffect(() => {
+        return () => {
+            debouncedSearch.cancel();
+        }
+    }, [debouncedSearch]);
+
+    const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setInputValue(event.target.value);
+        debouncedSearch(event.target.value);
+    };
 
     return (
         <div className={styles.root}>

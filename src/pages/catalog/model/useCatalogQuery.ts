@@ -1,11 +1,11 @@
 import { useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router';
-import { SearchContext, setCategotyId, setCurrentPage, setSort } from "@/features/catalog-controls"
-import { useAppSelector } from '@/app/store/hooks';
+import { SearchContext, setCategotyId, setCurrentPage, setSort, type SortType } from "@/features/catalog-controls"
+import { useAppDispatch, useAppSelector } from '@/shared/store';
 
 export const useCatalogQuery = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
+
     const { categoryId, sortType, currentPage } = useAppSelector((state) => state.filter);
 
     const [searchParams, setSearchParams] = useSearchParams();
@@ -49,7 +49,7 @@ export const useCatalogQuery = () => {
         }
 
         if (sort) {
-            dispatch(setSort(sort));
+            dispatch(setSort(sort as SortType));
         }
 
         if (search) {

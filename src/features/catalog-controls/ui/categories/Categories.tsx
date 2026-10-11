@@ -1,7 +1,12 @@
 import { categories } from "@/entities/product"
 import style from "./Categories.module.css"
 
-export function Categories({ value, onChangeCategory }) {
+interface CategoriesProps {
+    value: number;
+    onChangeCategory: (id: number) => void
+}
+
+export function Categories({ value, onChangeCategory }: CategoriesProps) {
 
     return (
         <div className={style.categories}>

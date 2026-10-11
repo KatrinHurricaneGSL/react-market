@@ -4,3 +4,5 @@ export { Sort } from "./ui/sort/Sort"
 export { default as filterReducer } from "./model/filterSlice"
 export { setCategotyId, setCurrentPage, setSort } from "./model/filterSlice"
 export { SearchContext } from "./model/searchContext"
+
+export type { FilterState, SortOption, SortType } from "./model/types"

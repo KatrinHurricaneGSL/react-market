@@ -1,6 +1,12 @@
+import type { ReactNode } from "react"
 import styles from "./ProductBlock.module.css"
+import type { BaseProduct } from "../../model/types"
 
-export function ProductBlock({ title, price, imageUrl, actions }) {
+interface Props extends BaseProduct {
+    actions?: ReactNode,
+}
+
+export function ProductBlock({ title, price, imageUrl, actions }: Props) {
     return (
         <div className={styles.wrapper}>
             <div className={styles.card}>

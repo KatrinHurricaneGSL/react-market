@@ -1,60 +1,43 @@
-import style from "./Sort.module.css"
-import { useEffect, useRef, useState } from 'react'
-import {useSelector, useDispatch } from "react-redux"
+import style from "./Sort.module.css";
+import { useEffect, useRef, useState } from 'react';
+import { useAppDispatch, useAppSelector } from "@/shared/store";
+import { setSort } from "../../model/filterSlice";
+import type { SortOption } from "../../model/types"
 
-import { setSort } from "../../model/filterSlice"
-
-const list = [
-    {
-        id: "-rating",
-        title: "популярности ↓"
-    },
-    {
-        id: "rating",
-        title: "популярности ↑"
-    },
-    {
-        id: "-price",
-        title: "цене ↓"
-    },
-    {
-        id: "price",
-        title: "цене ↑"
-    },
-    {
-        id: "-title",
-        title: "алфавиту ↓"
-    },
-    {
-        id: "title",
-        title: "алфавиту ↑"
-    }
+const list: SortOption[] = [
+    { id: "-rating", title: "популярность ↓" },
+    { id: "rating", title: "популярность ↑" },
+    { id: "-price", title: "цена ↓" },
+    { id: "price", title: "цена ↑" },
+    { id: "-title", title: "алфавит ↓" },
+    { id: "title", title: "алфавит ↑" },
 ]
 
 export function Sort() {
-    const dispatch = useDispatch()
-    const sort = useSelector(state => state.filter.sortType)
-    const sortRef = useRef(null)
+    const dispatch = useAppDispatch();
 
-    const [open, setOpen] = useState(false)
-    const [label, setLabel] = useState(list[0].title)
+    const sort = useAppSelector(state => state.filter.sortType);
+    const sortRef = useRef<HTMLDivElement>(null);
 
-    const onClickListItem = (item) => {
-        setLabel(item.title)
-        dispatch(setSort(item.id))
-        setOpen(false)
+    const [open, setOpen] = useState(false);
+    const [label, setLabel] = useState(list[0].title);
+
+    const onClickListItem = (item: SortOption) => {
+        setLabel(item.title);
+        dispatch(setSort(item.id));
+        setOpen(false);
     }
 
     useEffect(() => {
-        const handleClickOutside = event => {
-            if(!event.composedPath().includes(sortRef.current)) {
-                setOpen(false)
+        const handleClickOutside = (event: MouseEvent) => {
+            if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
+                setOpen(false);
             }
-        }
+        };
 
-        document.body.addEventListener("click", handleClickOutside)
+        document.body.addEventListener("click", handleClickOutside);
 
-        return () => document.body.removeEventListener("click", handleClickOutside)
+        return () => document.body.removeEventListener("click", handleClickOutside);
     }, [])
 
     return (
@@ -72,7 +55,7 @@ export function Sort() {
                     />
                 </svg>
 
-                <b>Сортировка по:</b>
+                <b>Сортировка:</b>
                 <span onClick={() => setOpen(!open)}>{label}</span>
             </div>
 
