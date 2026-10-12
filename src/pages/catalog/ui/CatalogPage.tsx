@@ -106,11 +106,13 @@ export const CatalogPage = () => {
         />
       )}
 
-      <Pagination
-        current={currentPage}
-        total={items.pages}
-        onPageChange={onChangePage}
-      />
+      {items.data.length > 0 && (
+        <Pagination
+          current={currentPage}
+          total={items.pages}
+          onPageChange={onChangePage}
+        />
+      )}
     </>
   );
 };
