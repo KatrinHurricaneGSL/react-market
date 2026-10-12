@@ -1,7 +1,7 @@
-import { NotFoundBlock } from "./not-found-block/NotFoundBlock"
+import { NotFoundBlock } from "@/shared/ui/not-found-block"
 
 export const NotFoundPage = () => {
     return (
-        <NotFoundBlock />
+        <NotFoundBlock description="Данная страница отсутствует на маркетплейсе"/>
     )
 }

@@ -1,26 +1,29 @@
 import { Route, Routes } from 'react-router';
 import { useState } from 'react';
 
-import style from './App.module.css';
+import styles from './styles/App.module.css';
+import "./styles/variables.css"
 import { Header } from '@/widgets/header'
 import { CatalogPage } from '@/pages/catalog'
-import { CartPage } from '@/pages/cart-temp'
+import { CartPage } from '@/pages/cart'
 import { NotFoundPage } from '@/pages/not-found'
 
 import { SearchContext } from '@/features/catalog-controls';
+import { FavoritePage } from '@/pages/favorite';
 
 function App() {
   const [searchValue, setSearchValue] = useState("")
 
   return (
-    <div className={style.wrapper}>
+    <div className={styles.wrapper}>
       <SearchContext.Provider value={{ searchValue, setSearchValue }}>
         <Header />
-        <div className={style.content}>
-          <div className={style.container}>
+        <div className={styles.content}>
+          <div className={styles.container}>
             <Routes>
               <Route path="/" element={<CatalogPage />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/favorite" element={<FavoritePage />}/>
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>

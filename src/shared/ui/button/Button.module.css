@@ -1,20 +1,15 @@
 .button {
-    --button-block-padding: clamp(8px, 1.2vw, 10px);
-    --button-inline-padding: clamp(12px, 2vw, 20px);
-    --button-font-size: clamp(14px, 1.5vw, 16px);
-    --button-circle-size: clamp(28px, 4vw, 32px);
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-width: 0;
     padding: var(--button-block-padding) var(--button-inline-padding);
     border: 1px solid transparent;
-    border-radius: 30px;
-    background-color: #f71923;
+    border-radius: var(--button-radius);
+    background-color: var(--accent-color);
     color: #fff;
     font-size: var(--button-font-size);
-    line-height: 1.25;
+    line-height: var(--button-line-height);
     text-align: center;
     cursor: pointer;
     user-select: none;
@@ -38,7 +33,6 @@
 
 .button:active {
     background-color: #f71923;
-    transform: translateY(1px);
 }
 
 .outline {

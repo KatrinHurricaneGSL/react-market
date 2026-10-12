@@ -7,7 +7,6 @@ interface CategoriesProps {
 }
 
 export function Categories({ value, onChangeCategory }: CategoriesProps) {
-
     return (
         <div className={style.categories}>
             <ul className={style.list}>

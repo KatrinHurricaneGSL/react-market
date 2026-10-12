@@ -9,6 +9,7 @@ import { ContentItems } from '@/shared/ui/content-items';
 import { Pagination } from '@/shared/ui/pagination';
 
 import { useCatalogQuery } from "../model/useCatalogQuery"
+import { Title } from '@/shared/ui/typography';
 
 export const CatalogPage = () => {
     const {
@@ -78,11 +79,11 @@ export const CatalogPage = () => {
                 <Sort />
             </div>
 
-            <h2 className={styles.contentTitle}>
+            <Title tag='h2'>
                 {
                     activeCategory?.title || "Все товары"
                 }
-            </h2>
+            </Title>
 
             <ContentItems>
                 {isLoading
@@ -91,7 +92,7 @@ export const CatalogPage = () => {
                         <ProductBlock
                             key={product.id}
                             {...product}
-                            actions={<AddToCartButton />}
+                            actions={<AddToCartButton product={product}/>}
                         />
                     ))
                 }
