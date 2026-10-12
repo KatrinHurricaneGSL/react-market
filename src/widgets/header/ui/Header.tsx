@@ -2,14 +2,21 @@ import styles from "./Header.module.css";
 import { useContext, useState } from "react";
 import { Link } from "react-router";
 import { Button } from "@/shared/ui/button";
-import { Search, SearchContext, resetFilters } from "@/features/catalog-controls";
+import {
+  Search,
+  SearchContext,
+  resetFilters,
+} from "@/features/catalog-controls";
 import { Heart, ShoppingBasket, ShoppingCart } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/shared/store";
+import { selectTotalCartItems, selectTotalPrice } from "@/entities/cart";
 
 export function Header() {
   const dispatch = useAppDispatch();
   const { setSearchValue } = useContext(SearchContext);
   const [searchResetKey, setSearchResetKey] = useState(0);
+  const totalPrice = useAppSelector(selectTotalPrice);
+  const totalCartItems = useAppSelector(selectTotalCartItems);
 
   const handleLogoClick = () => {
     dispatch(resetFilters());
@@ -54,13 +61,13 @@ export function Header() {
           </Link>
 
           <Button to="/cart" variants={["cart"]}>
-            <span>520 ₽</span>
+            <span>{totalPrice} ₽</span>
 
             <div className={styles.cartDelimiter}></div>
 
             <ShoppingCart />
 
-            <span>3</span>
+            <span>{totalCartItems}</span>
           </Button>
         </div>
       </div>

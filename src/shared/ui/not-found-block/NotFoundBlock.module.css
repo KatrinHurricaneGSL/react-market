@@ -5,6 +5,10 @@
     text-align: center;
 }
 
+.fullWidth {
+    max-width: 100%;
+}
+
 .title {
     display: flex;
     flex-direction: column;
