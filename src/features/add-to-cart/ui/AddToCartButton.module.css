@@ -42,9 +42,12 @@
 }
 
 .quantity {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  flex: 0 0 var(--cart-button-size);
+  min-width: 0;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: var(--cart-button-size);
 
   font-size: 20px;
   width: var(--cart-button-size);
@@ -55,6 +58,7 @@
   color: #fff;
 
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 

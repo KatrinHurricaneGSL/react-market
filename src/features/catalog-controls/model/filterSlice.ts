@@ -11,6 +11,9 @@ const filterSlice = createSlice({
     name: 'filters',
     initialState,
     reducers: {
+        resetFilters() {
+            return initialState;
+        },
         setCategotyId(state, action: PayloadAction<number>) {
             state.categoryId = action.payload;
             state.currentPage = 1;
@@ -24,5 +27,5 @@ const filterSlice = createSlice({
     }
 })
 
-export const { setCategotyId, setSort, setCurrentPage } = filterSlice.actions;
+export const { setCategotyId, setSort, setCurrentPage, resetFilters } = filterSlice.actions;
 export default filterSlice.reducer;

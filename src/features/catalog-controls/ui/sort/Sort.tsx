@@ -20,10 +20,9 @@ export function Sort() {
     const sortRef = useRef<HTMLDivElement>(null);
 
     const [open, setOpen] = useState(false);
-    const [label, setLabel] = useState(list[0].title);
+    const label = list.find((item) => item.id === sort)?.title ?? list[0].title;
 
     const onClickListItem = (item: SortOption) => {
-        setLabel(item.title);
         dispatch(setSort(item.id));
         setOpen(false);
     }

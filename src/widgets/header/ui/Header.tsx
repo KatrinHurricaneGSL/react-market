@@ -1,11 +1,22 @@
 import styles from "./Header.module.css";
+import { useContext, useState } from "react";
 import { Link } from "react-router";
 import { Button } from "@/shared/ui/button";
-import { Search } from "@/features/catalog-controls";
+import { Search, SearchContext, resetFilters } from "@/features/catalog-controls";
 import { Heart, ShoppingBasket, ShoppingCart } from "lucide-react";
-import { useAppSelector } from "@/shared/store";
+import { useAppDispatch, useAppSelector } from "@/shared/store";
 
 export function Header() {
+  const dispatch = useAppDispatch();
+  const { setSearchValue } = useContext(SearchContext);
+  const [searchResetKey, setSearchResetKey] = useState(0);
+
+  const handleLogoClick = () => {
+    dispatch(resetFilters());
+    setSearchValue("");
+    setSearchResetKey((key) => key + 1);
+  };
+
   const favoriteCount = useAppSelector((state) =>
     state.favorite.items.reduce((sum, item) => {
       if (item.isFavorite) {
@@ -19,7 +30,7 @@ export function Header() {
   return (
     <div className={styles.header}>
       <div className={styles.container}>
-        <Link to="/">
+        <Link to="/" onClick={handleLogoClick}>
           <div className={styles.headerLogo}>
             <ShoppingBasket />
             <div>
@@ -29,7 +40,7 @@ export function Header() {
           </div>
         </Link>
 
-        <Search />
+        <Search key={searchResetKey} />
 
         <div className={styles.headerCart}>
           <Link to="/favorite" className={styles.favoriteButton}>
