@@ -1,47 +1,86 @@
-import { Button } from "@/shared/ui/button"
-import { MinusIcon, PlusIcon } from "@/shared/ui/icons"
-import styles from "./CartItem.module.css"
+import { Button } from "@/shared/ui/button";
+import styles from "./CartItem.module.css";
+import {
+  decrementCount,
+  incrementCount,
+  removeProduct,
+  type CartItem,
+} from "@/entities/cart";
+import { Minus, Plus, X } from "lucide-react";
+import { useAppDispatch } from "@/shared/store";
 
 interface CartItemProps {
-    title: string
-    description: string
-    count: number
-    price: number
-    imageUrl: string
+  product: CartItem;
 }
 
-export function CartItem({ title, description, count, price, imageUrl }: CartItemProps) {
-    return (
-        <article className={styles.item}>
-            <div className={styles.itemProduct}>
-                <div className={styles.itemImage}>
-                    <img src={imageUrl} alt={title} />
-                </div>
-                <div className={styles.itemInfo}>
-                    <h3>{title}</h3>
-                    <p>{description}</p>
-                </div>
-            </div>
+export function CartItem({ product }: CartItemProps) {
+  const dispatch = useAppDispatch();
 
-            <div className={styles.itemActions}>
-                <div className={styles.itemCount}>
-                    <Button variants={["outline", "circle"]} aria-label="Уменьшить количество">
-                        <MinusIcon />
-                    </Button>
-                    <b>{count}</b>
-                    <Button variants={["outline", "circle"]} aria-label="Увеличить количество">
-                        <PlusIcon />
-                    </Button>
-                </div>
-                <div className={styles.itemPrice}>
-                    <b>{price} ₽</b>
-                </div>
-                <div className={styles.itemRemove}>
-                    <Button variants={["outline", "circle"]} aria-label="Удалить товар">
-                        <PlusIcon />
-                    </Button>
-                </div>
-            </div>
-        </article>
-    )
+  const handleDeleteItem = () => {
+    if (
+      confirm(
+        `Вы уверены, что хотите удалить товар "${product.title}" из корзины?`,
+      )
+    ) {
+      dispatch(removeProduct(product.id));
+    }
+  };
+
+  const handleMinus = () => {
+    if (product.count === 1) {
+      handleDeleteItem();
+      return;
+    }
+
+    dispatch(decrementCount(product.id));
+  };
+
+  const handlePlus = () => {
+    dispatch(incrementCount(product.id));
+  };
+
+  return (
+    <article className={styles.item}>
+      <div className={styles.itemProduct}>
+        <div className={styles.itemImage}>
+          <img src={product.imageUrl} alt={product.title} />
+        </div>
+        <div className={styles.itemInfo}>
+          <h3>{product.title}</h3>
+        </div>
+      </div>
+
+      <div className={styles.itemActions}>
+        <div className={styles.itemCount}>
+          <Button
+            variants={["outline", "circle"]}
+            aria-label="Уменьшить количество"
+            onClick={handleMinus}
+          >
+            <Minus />
+          </Button>
+          <b>{product.count}</b>
+          <Button
+            variants={["outline", "circle"]}
+            aria-label="Увеличить количество"
+            onClick={handlePlus}
+          >
+            <Plus />
+          </Button>
+        </div>
+        <div className={styles.itemPrice}>
+          <b>{product.price * product.count} ₽</b>
+        </div>
+        <div className={styles.itemRemove}>
+          <Button
+            onClick={handleDeleteItem}
+            variants={["outline", "circle"]}
+            aria-label="Удалить товар"
+          >
+            <X />
+          </Button>
+        </div>
+      </div>
+    </article>
+  );
 }
