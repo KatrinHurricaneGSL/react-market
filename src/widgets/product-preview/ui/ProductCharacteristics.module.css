@@ -1,0 +1,26 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.table th,
+.table td {
+  padding: 8px 0;
+  text-align: left;
+  vertical-align: top;
+  border: none;
+}
+
+.table th {
+  width: 45%;
+  padding-right: 20px;
+  color: #838383;
+  font-weight: 400;
+}
+
+.table td {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}

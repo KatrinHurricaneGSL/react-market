@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--accent-color);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.content h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.content p {
+  margin: 0;
+  color: #838383;
+  font-size: 14px;
+  line-height: 1.6;
+}

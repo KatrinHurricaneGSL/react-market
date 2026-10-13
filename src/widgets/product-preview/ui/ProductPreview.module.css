@@ -1,0 +1,89 @@
+.previewModal.previewModal {
+  width: 900px;
+  max-width: 90%;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.infoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ratingBlock {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  svg {
+    fill: #ffa800;
+    stroke: #ffa800;
+  }
+}
+
+.rating {
+  color: #838383;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.favorite {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  svg {
+    stroke: #838383;
+  }
+
+  &.favoriteActive svg {
+    fill: var(--accent-color);
+    stroke: var(--accent-color);
+  }
+}
+
+/* Табы */
+.tabItems {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.tabLink {
+  padding: 0 0 10px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+  }
+
+  &.tabActive {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+  }
+}
+
+.tab {
+  display: none;
+
+  &.contentActive {
+    display: block;
+  }
+}
