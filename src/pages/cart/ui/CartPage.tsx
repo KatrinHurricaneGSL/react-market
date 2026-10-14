@@ -11,7 +11,7 @@ import {
   loadCartProducts,
   removeProduct,
 } from "@/entities/cart";
-import { Trash } from "lucide-react";
+import { ChevronLeft, Trash } from "lucide-react";
 import { NotFoundBlock } from "@/shared/ui/not-found-block";
 import { Link } from "react-router";
 import { openProductPreview } from "@/features/product-preview";
@@ -51,10 +51,9 @@ export const CartPage = () => {
     <div className={styles.cart}>
       <div className={styles.top}>
         <h2 className={styles.title}>Корзина</h2>
-        <button onClick={clearCart} className={styles.clear} type="button">
-          <Trash />
-          <span>Очистить корзину</span>
-        </button>
+        <Button onClick={clearCart} variant="ghost" icon={<Trash />}>
+          Очистить корзину
+        </Button>
       </div>
 
       {error ? (
@@ -97,24 +96,10 @@ export const CartPage = () => {
         <div className={styles.bottomButtons}>
           <Button
             to="/"
-            variants={["outline", "add"]}
+            variant="outline"
             className={styles.goBack}
+            icon={<ChevronLeft />}
           >
-            <svg
-              width="8"
-              height="14"
-              viewBox="0 0 8 14"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M7 13 1 6.93 6.86 1"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
             <span>Вернуться назад</span>
           </Button>
           <Button className={styles.pay} disabled={totalPrice === null}>

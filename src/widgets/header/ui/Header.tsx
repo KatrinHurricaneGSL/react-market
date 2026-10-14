@@ -49,24 +49,18 @@ export function Header({ onResetSearch }: Props) {
         </Link>
 
         <div className={styles.headerCart}>
-          <Link to="/favorite" className={styles.favoriteButton}>
-            <Heart />
-
+          <Button to="/favorite" variant="outline" icon={<Heart />}
+            className={styles.favoriteButton} aria-label={`Избранное: ${favoriteCount}`}>
             {favoriteCount > 0 && (
-              <div className={styles.badge}>
+              <span className={styles.badge}>
                 <span>{favoriteCount > 9 ? "9+" : favoriteCount}</span>
-              </div>
+              </span>
             )}
-          </Link>
+          </Button>
 
-          <Button to="/cart" variants={["cart"]}>
-            <span>{totalPrice === null ? "—" : formatPrice(totalPrice)}</span>
-
-            <div className={styles.cartDelimiter}></div>
-
-            <ShoppingCart />
-
-            <span>{totalCartItems}</span>
+          <Button to="/cart" icon={<><ShoppingCart /><span>{totalCartItems}</span></>}
+            iconPosition="end" iconDivider aria-label={`Корзина: ${totalCartItems} товаров`}>
+            {totalPrice === null ? "—" : formatPrice(totalPrice)}
           </Button>
         </div>
       </div>

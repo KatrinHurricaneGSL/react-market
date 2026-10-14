@@ -14,7 +14,7 @@ export function Alert({ message, actionLabel, onAction }: Props) {
       <CircleAlert className={styles.icon} size={24} aria-hidden="true" />
       <p className={styles.message}>{message}</p>
       {onAction && (
-        <Button variants={["outline"]} onClick={onAction}>
+        <Button variant="outline" onClick={onAction}>
           {actionLabel ?? "Повторить"}
         </Button>
       )}

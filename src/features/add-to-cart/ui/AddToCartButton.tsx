@@ -48,8 +48,7 @@ export const AddToCartButton = ({ product }: Props) => {
   if (quantity === 0) {
     return (
       <Button
-        className={styles.cartButton}
-        variants={["outline", "add"]}
+        variant="outline"
         onClick={handleIncrement}
       >
         <span>Добавить</span>

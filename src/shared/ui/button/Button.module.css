@@ -1,144 +1,147 @@
-.button {
+﻿.button {
+    --button-height: 44px;
+    --button-icon-size: 22px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
     min-width: 0;
-    padding: var(--button-block-padding) var(--button-inline-padding);
+    min-height: var(--button-height);
+    box-sizing: border-box;
+    padding: 10px 20px;
     border: 1px solid transparent;
     border-radius: var(--button-radius);
-    background-color: var(--accent-color);
-    color: #fff;
-    font-size: var(--button-font-size);
-    line-height: var(--button-line-height);
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.25;
     text-align: center;
+    text-decoration: none;
     cursor: pointer;
     user-select: none;
-    transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
+    transition: background-color .15s ease-in-out, border-color .15s ease-in-out, color .15s ease-in-out;
 }
 
-.button span {
-    color: inherit;
+.button span { color: inherit; }
+
+.button.sm {
+    --button-height: 32px;
+    --button-icon-size: 18px;
+    gap: 6px;
+    font-size: 14px;
 }
 
-.button i,
-.button span,
-.button path,
-.button svg {
-    transition: all .15s ease-in-out;
+.sm:not(.circle):not(.iconOnly):not(.ghost) {
+    padding: 6px 12px;
 }
 
-.button:hover {
-    background-color: #f71923;
+.primary {
+    background-color: var(--accent-color);
+    color: #fff;
 }
 
-.button:active {
-    background-color: #f71923;
-}
+.primary:hover { background-color: color-mix(in srgb, var(--accent-color), black 12%); }
 
 .outline {
-    border-color: #f71923;
-    background-color: #fff;
-    color: #f71923;
-}
-
-.outline svg path {
-    fill: #f71923;
+    border-color: var(--accent-color);
+    background-color: transparent;
+    color: var(--accent-color);
 }
 
 .outline:hover {
-    background-color: #f71923;
+    background-color: var(--accent-color);
     color: #fff;
 }
 
-.outline:hover svg path {
-    fill: #fff;
-}
-
-.circle {
-    flex: 0 0 var(--button-circle-size);
-    width: var(--button-circle-size);
-    height: var(--button-circle-size);
-    min-width: var(--button-circle-size);
+.ghost {
+    min-height: 0;
     padding: 0;
-    border-width: 2px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #8d8d8d;
+    font-weight: 400;
 }
 
-.circle svg {
-    max-width: 60%;
-    max-height: 60%;
+.ghost:hover { color: #373737; }
+
+.circle { border-radius: 50%; }
+
+.iconOnly,
+.circle {
+    flex-shrink: 0;
+    width: var(--button-height);
+    height: var(--button-height);
+    padding: 0;
 }
 
-.add svg {
-    margin-right: 2px;
+.iconEnd { flex-direction: row-reverse; }
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    gap: 6px;
 }
 
-.add span {
-    font-size: inherit;
-    font-weight: 600;
+.icon svg {
+    width: var(--button-icon-size);
+    height: var(--button-icon-size);
+    flex-shrink: 0;
 }
 
-.add i {
-    position: relative;
-    top: -1px;
-    left: 3px;
-    width: clamp(19px, 2.75vw, 22px);
-    height: clamp(19px, 2.75vw, 22px);
-    border-radius: 30px;
-    background-color: #f71923;
-    color: #fff;
-    font-size: clamp(11px, 1.5vw, 13px);
-    font-style: normal;
-    font-weight: 600;
-    line-height: clamp(19px, 2.75vw, 22px);
+.label { min-width: 0; }
+
+.divider {
+    align-self: stretch;
+    width: 1px;
+    flex-shrink: 0;
+    background: currentColor;
+    opacity: .25;
 }
 
-.add:hover i {
-    background-color: #fff;
-    color: #f71923;
+.button:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
 }
 
-.cart {
-    padding: clamp(9px, 1.5vw, 12px) clamp(16px, 2.5vw, 25px);
-    line-height: 1.4;
+.button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
 }
 
-.cart svg {
-    margin-right: 8px;
-    margin-bottom: 1px;
+.button:disabled:hover {
+    background-color: var(--accent-color);
 }
 
-.cart span {
-    font-size: inherit;
-    font-weight: 600;
+.outline:disabled:hover {
+    background-color: transparent;
+    color: var(--accent-color);
 }
 
-.black {
-    background-color: #232323;
+.ghost:disabled:hover {
+    background: transparent;
+    color: #8d8d8d;
 }
 
-.black:hover,
-.black:active {
-    background-color: #3d3d3d;
+@media (max-width: 768px) {
+    .button {
+        --button-height: 40px;
+        --button-icon-size: 20px;
+        gap: 8px;
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .iconOnly,
+    .circle,
+    .ghost { padding: 0; }
 }
 
 @media (max-width: 480px) {
-    .button {
-        --button-inline-padding: 12px;
-        white-space: nowrap;
-    }
-
-    .cart {
-        padding-inline: 14px;
-    }
-
-    .cart svg {
-        margin-right: 5px;
-    }
-}
-
-@media (max-width: 468px) {
-    .circle {
-        --button-circle-size: 20px;
-        border-width: 1.5px;
-    }
+    .button { gap: 6px; padding-inline: 12px; }
+    .iconOnly,
+    .circle,
+    .ghost { padding: 0; }
 }

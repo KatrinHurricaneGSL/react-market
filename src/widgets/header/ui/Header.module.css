@@ -44,16 +44,22 @@
     gap: 25px;
 }
 
-.favoriteButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.favoriteButton.favoriteButton {
     position: relative;
-
-    width: 50px;
-    height: 50px;
+    gap: 0;
+    flex-shrink: 0;
+    width: var(--button-height);
+    height: var(--button-height);
+    padding: 0;
     border-radius: 8px;
-    border: 1px solid #d4d4d4;
+    border-color: #d4d4d4;
+    color: #232323;
+}
+
+.favoriteButton.favoriteButton:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    background: transparent;
 }
 
 .badge {
@@ -69,7 +75,7 @@
     height: 20px;
     line-height: 20px;
 
-    background: #f71923;
+    background: var(--accent-color);
     border-radius: 50%;
 
     padding: 2px;
@@ -79,19 +85,7 @@
 
     box-sizing: border-box;
 
-    span {
-        color: white;
-    }
 }
-
-.cartDelimiter {
-    width: 1px;
-    height: 25px;
-    margin: 0 14px;
-    background-color: rgba(255, 255, 255, .25);
-}
-
-
 
 @media (max-width: 645px) {
     .headerCart {
@@ -116,6 +110,15 @@
 }
 
 @media (max-width: 540px) {
+    .header .container {
+        flex-wrap: wrap;
+    }
+
+    .headerCart {
+        margin-top: 0;
+        gap: 12px;
+    }
+
     .headerLogo h1 {
         font-size: 16px;
     }
@@ -125,7 +128,6 @@
     }
 }
 
-
 @media (max-width: 468px) {
     .headerLogo h1 {
         font-size: 14px;
@@ -134,4 +136,8 @@
     .headerLogo p {
         font-size: 10px;
     }
+}
+.favoriteButton .badge,
+.favoriteButton .badge span {
+    color: #fff;
 }

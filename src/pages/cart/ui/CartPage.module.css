@@ -24,33 +24,6 @@
     margin-right: 10px;
 }
 
-.clear {
-    display: flex;
-    align-items: center;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    color: #b6b6b6;
-    cursor: pointer;
-    user-select: none;
-}
-
-.clear span {
-    margin-left: 7px;
-    color: inherit;
-    font-size: 18px;
-}
-
-.clear,
-.clear span,
-.clear svg {
-    transition: color .15s ease-in-out;
-}
-
-.clear:hover {
-    color: #373737;
-}
-
 .bottom {
     margin: 50px 0;
 }
@@ -76,33 +49,17 @@
     border-color: #ddd;
 }
 
-.goBack span {
-    color: #c3c3c3;
-    font-weight: 600;
-}
+.goBack.goBack { color: #8d8d8d; }
 
 .goBack:hover {
     border-color: #111;
     background-color: #111;
 }
 
-.goBack:hover span {
-    color: #f6f6f6;
-}
-
-.goBack svg {
-    margin-right: 12px;
-}
-
-.goBack svg path {
-    fill: transparent;
-}
+.goBack.goBack:hover { color: #f6f6f6; }
 
 .pay {
     width: min(210px, 48%);
-    padding: clamp(10px, 2vw, 16px);
-    font-size: 16px;
-    font-weight: 600;
 }
 
 @media (max-width: 900px) {
@@ -122,10 +79,6 @@
         flex: 1;
     }
 
-    .goBack svg {
-        flex: 0 0 auto;
-        margin-right: 6px;
-    }
 }
 
 @media (max-width: 420px) {
@@ -142,10 +95,6 @@
 @media (max-width: 768px) {
     .cart {
         margin: 0;
-    }
-
-    .clear span {
-        font-size: 14px;
     }
 
     .title {

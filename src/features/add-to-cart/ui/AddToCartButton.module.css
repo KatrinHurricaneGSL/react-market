@@ -1,8 +1,5 @@
-:root {
-    --cart-button-size: 42px;
-}
-
 .counter {
+  --cart-button-size: 44px;
   display: flex;
   align-items: center;
   user-select: none;
@@ -30,10 +27,6 @@
   transition:
     background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out;
-}
-
-.cartButton {
-  height: var(--cart-button-size);
 }
 
 .minusButton {
@@ -65,4 +58,8 @@
 .plusButton {
   border-top-right-radius: var(--button-radius);
   border-bottom-right-radius: var(--button-radius);
+}
+
+@media (max-width: 768px) {
+  .counter { --cart-button-size: 40px; }
 }

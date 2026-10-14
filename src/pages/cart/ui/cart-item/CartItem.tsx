@@ -60,20 +60,22 @@ export function CartItem({ product, onPreview }: CartItemProps) {
       <div className={styles.itemActions}>
         <div className={styles.itemCount}>
           <Button
-            variants={["outline", "circle"]}
+            variant="outline"
+            shape="circle"
+            icon={<Minus />}
+            size="sm"
             aria-label="Уменьшить количество"
             onClick={handleMinus}
-          >
-            <Minus />
-          </Button>
+          />
           <b>{product.count}</b>
           <Button
-            variants={["outline", "circle"]}
+            variant="outline"
+            shape="circle"
+            icon={<Plus />}
+            size="sm"
             aria-label="Увеличить количество"
             onClick={handlePlus}
-          >
-            <Plus />
-          </Button>
+          />
         </div>
         <div className={styles.itemPrice}>
           <b>{formatPrice(product.price * product.count)}</b>
@@ -81,11 +83,12 @@ export function CartItem({ product, onPreview }: CartItemProps) {
         <div className={styles.itemRemove}>
           <Button
             onClick={handleDeleteItem}
-            variants={["outline", "circle"]}
+            variant="outline"
+            shape="circle"
+            icon={<X />}
+            size="sm"
             aria-label="Удалить товар"
-          >
-            <X />
-          </Button>
+          />
         </div>
       </div>
     </article>
