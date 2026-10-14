@@ -133,13 +133,21 @@
     overflow-x: auto;
     gap: 14px;
     font-size: 16px;
-    padding-top: 4px;
-    scrollbar-width: thin;
+    padding: 6px 0;
+    scrollbar-width: none;
+  }
+
+  .tabItems::-webkit-scrollbar {
+    display: none;
   }
 
   .tabLink {
     flex-shrink: 0;
     white-space: nowrap;
+  }
+
+  .tabLink:focus-visible {
+    outline-offset: -2px;
   }
 }
 
