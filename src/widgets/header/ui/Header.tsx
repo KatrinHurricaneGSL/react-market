@@ -1,5 +1,6 @@
 import styles from "./Header.module.css";
 import { useEffect } from "react";
+import { shallowEqual } from "react-redux";
 import { Link, useLocation } from "react-router";
 import { Button } from "@/shared/ui/button";
 import {
@@ -17,14 +18,17 @@ type Props = {
 export function Header({ onResetSearch }: Props) {
   const dispatch = useAppDispatch();
   const totalPrice = useAppSelector(selectTotalPrice);
-  const cartItems = useAppSelector((state) => state.cart.items);
+  const cartIds = useAppSelector(
+    (state) => state.cart.items.map((item) => item.id),
+    shallowEqual,
+  );
   const { pathname } = useLocation();
   const totalCartItems = useAppSelector(selectTotalCartItems);
 
   useEffect(() => {
-    const request = dispatch(loadCartProducts(cartItems.map((item) => item.id)));
+    const request = dispatch(loadCartProducts(cartIds));
     return () => request.abort();
-  }, [cartItems, pathname, dispatch]);
+  }, [cartIds, pathname, dispatch]);
 
   const handleLogoClick = () => {
     dispatch(resetFilters());
@@ -58,9 +62,12 @@ export function Header({ onResetSearch }: Props) {
             )}
           </Button>
 
-          <Button to="/cart" icon={<><ShoppingCart /><span>{totalCartItems}</span></>}
+          <Button to="/cart" className={styles.cartButton}
+            icon={<><ShoppingCart /><span>{totalCartItems}</span></>}
             iconPosition="end" iconDivider aria-label={`Корзина: ${totalCartItems} товаров`}>
-            {totalPrice === null ? "—" : formatPrice(totalPrice)}
+            <span className={styles.cartTotal}>
+              {totalPrice === null ? "—" : formatPrice(totalPrice)}
+            </span>
           </Button>
         </div>
       </div>

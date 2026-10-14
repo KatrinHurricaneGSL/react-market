@@ -61,7 +61,7 @@ export const CartPage = () => {
           message="Не удалось загрузить актуальные цены и товары корзины."
           onAction={() => dispatch(loadCartProducts(entries.map((item) => item.id)))}
         />
-      ) : isLoading ? (
+      ) : isLoading && items.length === 0 ? (
         <p role="status">Загружаем корзину…</p>
       ) : null}
 

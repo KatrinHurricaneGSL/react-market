@@ -56,6 +56,18 @@
     color: #232323;
 }
 
+.cartButton {
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.cartTotal {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .favoriteButton.favoriteButton:hover {
     border-color: var(--accent-color);
     color: var(--accent-color);
