@@ -10,6 +10,12 @@
   margin-bottom: 20px;
 }
 
+.info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .infoHeader {
   display: flex;
   justify-content: space-between;
@@ -52,7 +58,12 @@
 .infoRows {
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 14px;
+}
+
+.checkout {
+  margin-top: auto;
 }
 
 .title {

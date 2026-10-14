@@ -99,12 +99,6 @@
 
 }
 
-@media (max-width: 645px) {
-    .headerCart {
-        margin-top: 20px;
-    }
-}
-
 @media (max-width: 768px) {
     .headerLogo h1 {
         font-size: 18px;
@@ -127,7 +121,6 @@
     }
 
     .headerCart {
-        margin-top: 0;
         gap: 12px;
     }
 
