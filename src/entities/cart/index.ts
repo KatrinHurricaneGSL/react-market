@@ -5,6 +5,7 @@ export {
   incrementCount,
   decrementCount,
   clearProducts,
+  loadCartProducts,
 } from "./model/cartSlice";
-export type { CartItem, CartState } from "./model/types";
-export { selectTotalPrice, selectTotalCartItems } from "./model/selectors";
+export type { CartItem, CartEntry, CartState } from "./model/types";
+export { selectCartItems, selectTotalPrice, selectTotalCartItems } from "./model/selectors";

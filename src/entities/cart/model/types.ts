@@ -1,9 +1,17 @@
 import type { ProductType } from "@/entities/product";
 
 export interface CartItem extends ProductType {
-    count: number;
+  count: number;
+}
+
+export interface CartEntry {
+  id: number;
+  count: number;
 }
 
 export interface CartState {
-    items: CartItem[]
+  items: CartEntry[];
+  products: ProductType[];
+  isLoading: boolean;
+  error: boolean;
 }

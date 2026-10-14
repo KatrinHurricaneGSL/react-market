@@ -1,0 +1,30 @@
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-block: 20px;
+  padding: 20px;
+  border: 1px solid color-mix(in srgb, var(--accent-color) 25%, white);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent-color) 4%, white);
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--accent-color);
+}
+
+.message {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .alert {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px;
+  }
+}

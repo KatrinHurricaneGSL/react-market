@@ -17,15 +17,15 @@ export function ProductBlock({ product, actions, onPreview }: Props) {
 
   const dispath = useAppDispatch();
 
-  const favoriteItem = useAppSelector((state) =>
-    state.favorite.items.find((item) => item.id === id),
+  const isFavorite = useAppSelector((state) =>
+    state.favorite.ids.includes(id),
   );
 
   const handleFavoriteButtonClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     event.stopPropagation();
-    dispath(addFavorite(product));
+    dispath(addFavorite(product.id));
   };
 
   return (
@@ -40,10 +40,10 @@ export function ProductBlock({ product, actions, onPreview }: Props) {
 
         <button
           className={clsx(styles.favorite, {
-            [styles.favoriteActive]: favoriteItem?.isFavorite,
+            [styles.favoriteActive]: isFavorite,
           })}
           aria-label={
-            favoriteItem?.isFavorite
+            isFavorite
               ? `Удалить ${title} из избранного`
               : `Добавить ${title} в избранное`
           }

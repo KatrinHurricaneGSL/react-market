@@ -18,6 +18,7 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
   const product = useAppSelector(selectPreviewProduct);
   const dispatch = useAppDispatch();
+  const handleClosePreview = () => dispatch(closeProductPreview());
 
   return (
     <div className={styles.wrapper}>
@@ -39,7 +40,7 @@ function App() {
         <ProductPreview
           key={product.id}
           product={product}
-          onClose={() => dispatch(closeProductPreview())}
+          onClose={handleClosePreview}
         />
       )}
     </div>

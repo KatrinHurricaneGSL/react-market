@@ -1,4 +1,5 @@
 export { getProducts } from "./api/getProducts";
+export { getProductsByIds } from "./api/getProductsByIds";
 export { categories } from "./model/categories";
 export type {
   ProductType,

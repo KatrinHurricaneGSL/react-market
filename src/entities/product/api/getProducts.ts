@@ -23,5 +23,8 @@ export async function getProducts(queryParams: URLSearchParams): Promise<Paginat
         `http://localhost:3000/products?${apiParams.toString()}`
     )
 
-    return response.data
+    return {
+        ...response.data,
+        data: response.data.data.map((product) => ({ ...product, id: Number(product.id) })),
+    }
 }

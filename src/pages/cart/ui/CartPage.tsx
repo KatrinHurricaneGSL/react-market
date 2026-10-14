@@ -6,16 +6,23 @@ import { useAppDispatch, useAppSelector } from "@/shared/store";
 import {
   clearProducts,
   selectTotalCartItems,
+  selectCartItems,
   selectTotalPrice,
+  loadCartProducts,
+  removeProduct,
 } from "@/entities/cart";
 import { Trash } from "lucide-react";
 import { NotFoundBlock } from "@/shared/ui/not-found-block";
 import { Link } from "react-router";
 import { openProductPreview } from "@/features/product-preview";
+import { Alert } from "@/shared/ui/alert";
 
 export const CartPage = () => {
-  const { items } = useAppSelector((state) => state.cart);
+  const { items: entries, products, isLoading, error } = useAppSelector((state) => state.cart);
+  const items = useAppSelector(selectCartItems);
   const totalPrice = useAppSelector(selectTotalPrice);
+  const unavailableItems = isLoading || error ? []
+    : entries.filter((item) => !products.some((product) => product.id === item.id));
   const totalItems = useAppSelector(selectTotalCartItems);
 
   const dispatch = useAppDispatch();
@@ -49,6 +56,15 @@ export const CartPage = () => {
         </button>
       </div>
 
+      {error ? (
+        <Alert
+          message="Не удалось загрузить актуальные цены и товары корзины."
+          onAction={() => dispatch(loadCartProducts(entries.map((item) => item.id)))}
+        />
+      ) : isLoading ? (
+        <p role="status">Загружаем корзину…</p>
+      ) : null}
+
       <ContentItems variant="list">
         {items.map((item) => (
           <CartItem
@@ -59,13 +75,22 @@ export const CartPage = () => {
         ))}
       </ContentItems>
 
+      {unavailableItems.map((item) => (
+        <Alert
+          key={item.id}
+          message={`Товар №${item.id} больше недоступен. Количество: ${item.count}.`}
+          actionLabel="Удалить из корзины"
+          onAction={() => dispatch(removeProduct(item.id))}
+        />
+      ))}
+
       <div className={styles.bottom}>
         <div className={styles.bottomDetails}>
           <span>
             Всего товаров: <b>{totalItems} шт.</b>
           </span>
           <span>
-            Сумма заказа: <b>{totalPrice} ₽</b>
+            Сумма заказа: <b>{totalPrice === null ? "Недоступна" : `${totalPrice} ₽`}</b>
           </span>
         </div>
         <div className={styles.bottomButtons}>
@@ -91,7 +116,7 @@ export const CartPage = () => {
             </svg>
             <span>Вернуться назад</span>
           </Button>
-          <Button className={styles.pay}>
+          <Button className={styles.pay} disabled={totalPrice === null}>
             <span>Оплатить</span>
           </Button>
         </div>

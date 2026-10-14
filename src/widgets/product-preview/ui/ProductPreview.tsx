@@ -38,8 +38,8 @@ export const ProductPreview = ({ product, onClose }: Props) => {
 
   const dispath = useAppDispatch();
 
-  const favoriteItem = useAppSelector((state) =>
-    state.favorite.items.find((item) => item.id === product.id),
+  const isFavorite = useAppSelector((state) =>
+    state.favorite.ids.includes(product.id),
   );
 
   const tabsContent: TabContent[] = [
@@ -62,7 +62,7 @@ export const ProductPreview = ({ product, onClose }: Props) => {
   ];
 
   const handleAddToFavorite = () => {
-    dispath(addFavorite(product));
+    dispath(addFavorite(product.id));
   };
 
   return (
@@ -92,10 +92,10 @@ export const ProductPreview = ({ product, onClose }: Props) => {
 
               <button
                 className={clsx(styles.favorite, {
-                  [styles.favoriteActive]: favoriteItem?.isFavorite,
+                  [styles.favoriteActive]: isFavorite,
                 })}
                 aria-label={
-                  favoriteItem?.isFavorite
+                  isFavorite
                     ? `Удалить ${product.title} из избранного`
                     : `Добавить ${product.title} в избранное`
                 }

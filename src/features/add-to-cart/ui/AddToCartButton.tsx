@@ -24,7 +24,7 @@ export const AddToCartButton = ({ product }: Props) => {
 
   const handleIncrement = () => {
     if (quantity === 0) {
-      dispatch(addProduct({ ...product, count: 1 }));
+      dispatch(addProduct({ id: product.id, count: 1 }));
     } else {
       dispatch(incrementCount(product.id));
     }

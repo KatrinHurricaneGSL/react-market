@@ -5,9 +5,7 @@ type ProductPreviewState = {
   product: ProductType | null;
 };
 
-const initialState: ProductPreviewState = {
-  product: null,
-};
+const initialState: ProductPreviewState = { product: null };
 
 const productPreviewSlice = createSlice({
   name: "productPreview",

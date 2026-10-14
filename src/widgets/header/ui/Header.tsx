@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
-import { useContext, useState } from "react";
-import { Link } from "react-router";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router";
 import { Button } from "@/shared/ui/button";
 import {
   Search,
@@ -9,14 +9,21 @@ import {
 } from "@/features/catalog-controls";
 import { Heart, ShoppingBasket, ShoppingCart } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/shared/store";
-import { selectTotalCartItems, selectTotalPrice } from "@/entities/cart";
+import { loadCartProducts, selectTotalCartItems, selectTotalPrice } from "@/entities/cart";
 
 export function Header() {
   const dispatch = useAppDispatch();
   const { setSearchValue } = useContext(SearchContext);
   const [searchResetKey, setSearchResetKey] = useState(0);
   const totalPrice = useAppSelector(selectTotalPrice);
+  const cartItems = useAppSelector((state) => state.cart.items);
+  const { pathname } = useLocation();
   const totalCartItems = useAppSelector(selectTotalCartItems);
+
+  useEffect(() => {
+    const request = dispatch(loadCartProducts(cartItems.map((item) => item.id)));
+    return () => request.abort();
+  }, [cartItems, pathname, dispatch]);
 
   const handleLogoClick = () => {
     dispatch(resetFilters());
@@ -25,13 +32,7 @@ export function Header() {
   };
 
   const favoriteCount = useAppSelector((state) =>
-    state.favorite.items.reduce((sum, item) => {
-      if (item.isFavorite) {
-        sum += 1;
-      }
-
-      return sum;
-    }, 0),
+    state.favorite.ids.length,
   );
 
   return (
@@ -61,7 +62,7 @@ export function Header() {
           </Link>
 
           <Button to="/cart" variants={["cart"]}>
-            <span>{totalPrice} ₽</span>
+            <span>{totalPrice === null ? "—" : totalPrice} ₽</span>
 
             <div className={styles.cartDelimiter}></div>
 
