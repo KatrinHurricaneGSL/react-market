@@ -9,10 +9,10 @@
   gap: 8px;
   min-height: var(--button-default-height);
   padding: 10px 14px;
-  border: 1px solid color-mix(in srgb, var(--accent-color) 30%, white);
+  border: 1px solid #d4d4d4;
   border-radius: 8px;
-  background: color-mix(in srgb, var(--accent-color) 6%, white);
-  color: var(--accent-color);
+  background: transparent;
+  color: #373737;
   font: inherit;
   font-size: 14px;
   white-space: nowrap;
@@ -20,13 +20,13 @@
 }
 
 .sortLabel:hover {
-  background: color-mix(in srgb, var(--accent-color) 12%, white);
-  border-color: var(--accent-color);
+  background: #f9f9f9;
+  border-color: #838383;
 }
 
 .sortLabel:focus-visible,
 .item:focus-visible {
-  outline: 2px solid var(--accent-color);
+  outline: 2px solid #838383;
   outline-offset: 2px;
 }
 
