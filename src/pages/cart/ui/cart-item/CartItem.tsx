@@ -54,10 +54,10 @@ export function CartItem({ product, onPreview }: CartItemProps) {
               {product.title}
             </button>
           </h3>
+          <p>{formatPrice(product.price)} / шт.</p>
         </div>
       </div>
 
-      <div className={styles.itemActions}>
         <div className={styles.itemCount}>
           <Button
             variant="outline"
@@ -90,7 +90,6 @@ export function CartItem({ product, onPreview }: CartItemProps) {
             aria-label="Удалить товар"
           />
         </div>
-      </div>
     </article>
   );
 }

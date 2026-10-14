@@ -1,6 +1,7 @@
-.item {
+﻿.item {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  grid-template-areas: "product count price remove";
   align-items: center;
   gap: 24px;
   width: 100%;
@@ -10,14 +11,15 @@
 }
 
 .itemProduct,
-.itemActions,
 .itemCount {
   display: flex;
   align-items: center;
 }
 
 .itemProduct {
+  grid-area: product;
   min-width: 0;
+  gap: 15px;
   cursor: pointer;
 }
 
@@ -33,14 +35,14 @@
 }
 
 .itemImage {
-  flex: 0 0 auto;
-  margin-right: 15px;
+  flex-shrink: 0;
 }
 
 .itemImage img {
   display: block;
   width: 80px;
   height: 80px;
+  object-fit: contain;
 }
 
 .itemInfo {
@@ -52,14 +54,18 @@
   font-weight: bold;
   line-height: 27px;
   letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
 }
 
 .itemInfo p {
+  margin-top: 6px;
   color: #8d8d8d;
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .itemCount {
+  grid-area: count;
   gap: 12px;
 }
 
@@ -68,12 +74,15 @@
   font-size: 22px;
 }
 
-.itemActions {
-  gap: 24px;
-  justify-self: end;
+.itemCount b {
+  min-width: 2ch;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 
 .itemPrice {
+  grid-area: price;
+  justify-self: end;
   white-space: nowrap;
 }
 
@@ -82,12 +91,13 @@
   letter-spacing: 0.01em;
 }
 
-.itemRemove button {
-  border-color: #ddd;
+.itemRemove {
+  grid-area: remove;
+  justify-self: end;
 }
 
-.itemRemove svg {
-  position: relative;
+.itemRemove button {
+  border-color: #ddd;
 }
 
 .itemRemove svg {
@@ -100,20 +110,20 @@
   background-color: #2a2a2a;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
   .item {
-    gap: 12px;
-    padding: 0;
-    margin-top: 26px;
-  }
-
-  .itemImage {
-    margin-right: 8px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "product product remove"
+      "count price price";
+    gap: 20px 16px;
+    margin-top: 24px;
+    padding-top: 24px;
   }
 
   .itemImage img {
-    width: 64px;
-    height: 64px;
+    width: 72px;
+    height: 72px;
   }
 
   .itemInfo h3 {
@@ -123,13 +133,10 @@
 
   .itemInfo p {
     font-size: 14px;
+    line-height: 18px;
   }
 
   .itemCount {
-    gap: 6px;
-  }
-
-  .itemActions {
     gap: 8px;
   }
 
@@ -140,13 +147,14 @@
 }
 
 @media (max-width: 560px) {
-  .itemProduct {
-    grid-column: auto;
+  .item {
+    gap: 14px 10px;
+    margin-top: 18px;
+    padding-top: 18px;
   }
 
-  .itemActions {
-    width: 100%;
-    justify-content: flex-end;
+  .itemProduct {
+    gap: 10px;
   }
 
   .itemImage img {
@@ -155,26 +163,22 @@
   }
 
   .itemInfo h3 {
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 16px;
+    line-height: 20px;
   }
 
   .itemInfo p {
+    margin-top: 4px;
     font-size: 12px;
+    line-height: 16px;
+  }
+
+  .itemCount {
+    gap: 6px;
   }
 
   .itemCount b,
   .itemPrice b {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 400px) {
-  .itemInfo h3 {
-    font-size: 12px;
-  }
-
-  .itemInfo p {
-    font-size: 10px;
+    font-size: 16px;
   }
 }
