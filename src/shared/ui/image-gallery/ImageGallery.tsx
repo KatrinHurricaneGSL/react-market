@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import clsx from "clsx";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, FreeMode, Keyboard, Mousewheel, Thumbs } from "swiper/modules";
 import type { Swiper as SwiperInstance } from "swiper";
@@ -22,8 +23,8 @@ export const ImageGallery = ({ images }: Props) => {
   const hasMultipleImages = images.length > 1;
 
   return (
-    <div className={styles.layout}>
-      <Swiper
+    <div className={clsx(styles.layout, { [styles.singleImage]: !hasMultipleImages })}>
+      {hasMultipleImages && <Swiper
         className={styles.thumbnails}
         modules={[A11y, FreeMode, Mousewheel]}
         onSwiper={setThumbsSwiper}
@@ -51,7 +52,7 @@ export const ImageGallery = ({ images }: Props) => {
             </button>
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper>}
 
       <div className={styles.stage}>
         <button
@@ -73,7 +74,7 @@ export const ImageGallery = ({ images }: Props) => {
           onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
           thumbs={{
             swiper:
-              thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+              hasMultipleImages && thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
           }}
           keyboard={{ enabled: true, pageUpDown: false }}
           a11y={{ containerMessage: "Изображения товара" }}

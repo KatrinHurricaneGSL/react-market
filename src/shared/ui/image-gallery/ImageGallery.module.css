@@ -10,6 +10,15 @@
   min-width: 0;
 }
 
+.singleImage,
+.singleImage .stage {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.singleImage .nav {
+  display: none;
+}
+
 .thumbnails.thumbnails {
   width: 100%;
   height: var(--gallery-height);
