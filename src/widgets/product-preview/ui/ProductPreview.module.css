@@ -1,5 +1,6 @@
 .previewModal.previewModal {
   width: 900px;
+  min-width: 0;
   max-width: 90%;
 }
 
@@ -113,5 +114,52 @@
 
   &.contentActive {
     display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .title,
+  .price {
+    font-size: 24px;
+  }
+
+  .tabItems {
+    overflow-x: auto;
+    gap: 14px;
+    font-size: 16px;
+    padding-top: 4px;
+    scrollbar-width: thin;
+  }
+
+  .tabLink {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .previewModal.previewModal {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .content {
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+
+  .infoRows {
+    gap: 12px;
+  }
+
+  .title,
+  .price {
+    font-size: 22px;
   }
 }

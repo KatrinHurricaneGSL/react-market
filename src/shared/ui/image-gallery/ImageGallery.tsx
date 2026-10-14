@@ -28,11 +28,14 @@ export const ImageGallery = ({ images }: Props) => {
         className={styles.thumbnails}
         modules={[A11y, FreeMode, Mousewheel]}
         onSwiper={setThumbsSwiper}
-        direction="vertical"
+        direction="horizontal"
+        breakpoints={{
+          601: { direction: "vertical", mousewheel: { forceToAxis: true } },
+        }}
         slidesPerView="auto"
         spaceBetween={8}
         freeMode
-        mousewheel={{ forceToAxis: true }}
+        mousewheel={{ forceToAxis: false }}
         watchSlidesProgress
         a11y={{ containerMessage: "Миниатюры изображений" }}
       >

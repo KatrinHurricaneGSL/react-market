@@ -108,6 +108,22 @@
     --thumbnail-size: 52px;
     --nav-width: 24px;
 
+    grid-template-columns: minmax(0, 1fr);
     gap: 8px;
+  }
+
+  .stage {
+    grid-row: 1;
+  }
+
+  .thumbnails.thumbnails {
+    grid-row: 2;
+    height: var(--thumbnail-size);
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: auto;
+  }
+
+  .thumbnailSlide.thumbnailSlide {
+    width: var(--thumbnail-size);
   }
 }

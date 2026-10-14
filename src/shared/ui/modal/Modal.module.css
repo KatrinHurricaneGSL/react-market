@@ -29,7 +29,8 @@
   position: relative;
 
   width: 40%;
-  min-width: 400px;
+  min-width: min(400px, 100%);
+  max-width: 100%;
   margin: auto 0;
 
   background-color: white;
@@ -74,6 +75,16 @@
   gap: 12px;
   justify-content: end;
   padding: 12px;
+}
+
+@media (max-width: 600px) {
+  .modal {
+    padding-inline: 8px;
+  }
+
+  .body {
+    width: 100%;
+  }
 }
 
 @media (max-width: 468px) {
