@@ -8,6 +8,7 @@ import { openProductPreview } from "@/features/product-preview";
 import { removeFavorite } from "@/entities/favorites";
 import { NotFoundBlock } from "@/shared/ui/not-found-block";
 import { Alert } from "@/shared/ui/alert";
+import { Button } from "@/shared/ui/button";
 
 export const FavoritePage = () => {
   const dispatch = useAppDispatch();
@@ -38,7 +39,12 @@ export const FavoritePage = () => {
   }, [ids, retryKey]);
 
   if (ids.length === 0) {
-    return <NotFoundBlock description="Вы ещё ничего не добавили в избранное" />;
+    return (
+      <NotFoundBlock
+        description="Вы ещё ничего не добавили в избранное"
+        actions={<Button to="/">В каталог товаров</Button>}
+      />
+    );
   }
 
   if (error) {

@@ -7,6 +7,7 @@ type Props = {
   title?: ReactNode;
   icon?: ReactNode | false;
   fullWidth?: boolean;
+  actions?: ReactNode;
 };
 
 export function NotFoundBlock({
@@ -14,6 +15,7 @@ export function NotFoundBlock({
   title = "Ничего не найдено",
   description,
   fullWidth,
+  actions,
 }: Props) {
   return (
     <div
@@ -27,6 +29,7 @@ export function NotFoundBlock({
       </h1>
 
       {description && <p className={styles.description}>{description}</p>}
+      {actions && <div className={styles.actions}>{actions}</div>}
     </div>
   );
 }

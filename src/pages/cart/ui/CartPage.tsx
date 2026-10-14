@@ -13,7 +13,6 @@ import {
 } from "@/entities/cart";
 import { ChevronLeft, Trash } from "lucide-react";
 import { NotFoundBlock } from "@/shared/ui/not-found-block";
-import { Link } from "react-router";
 import { openProductPreview } from "@/features/product-preview";
 import { Alert } from "@/shared/ui/alert";
 import { formatPrice } from "@/shared/lib/format-price";
@@ -38,11 +37,7 @@ export const CartPage = () => {
       <NotFoundBlock
         icon="🛒"
         title="Корзина пуста"
-        description={
-          <Link style={{ textDecoration: "underline" }} to="/">
-            За покупками
-          </Link>
-        }
+        actions={<Button to="/">В каталог товаров</Button>}
       />
     );
   }

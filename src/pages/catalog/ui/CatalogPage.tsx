@@ -112,6 +112,7 @@ export const CatalogPage = () => {
       {items.data?.length === 0 && (
         <NotFoundBlock
           fullWidth
+          icon="🔍"
           title="Товары не найдены"
           description="Попробуйте изменить фильтры"
         />
