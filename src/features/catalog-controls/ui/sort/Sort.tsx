@@ -1,79 +1,70 @@
-import style from "./Sort.module.css";
-import { useEffect, useRef, useState } from 'react';
+import styles from "./Sort.module.css";
+import { useEffect, useRef, useState } from "react";
+import { ArrowDown, SlidersHorizontal, ArrowUp } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/shared/store";
 import { setSort } from "../../model/filterSlice";
-import type { SortOption } from "../../model/types"
+import type { SortOption } from "../../model/types";
 
-const list: SortOption[] = [
-    { id: "-rating", title: "популярность ↓" },
-    { id: "rating", title: "популярность ↑" },
-    { id: "-price", title: "цена ↓" },
-    { id: "price", title: "цена ↑" },
-    { id: "-title", title: "алфавит ↓" },
-    { id: "title", title: "алфавит ↑" },
-]
+const options: SortOption[] = [
+  { id: "-rating", title: "По популярности" },
+  { id: "rating", title: "По популярности" },
+  { id: "-price", title: "По цене" },
+  { id: "price", title: "По цене" },
+  { id: "-title", title: "По алфавиту" },
+  { id: "title", title: "По алфавиту" },
+];
 
 export function Sort() {
-    const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
+  const sort = useAppSelector((state) => state.filter.sortType);
+  const sortRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
+  const label = options.find((item) => item.id === sort)?.title ?? options[0].title;
+  const DirectionIcon = sort.startsWith("-") ? ArrowDown : ArrowUp;
 
-    const sort = useAppSelector(state => state.filter.sortType);
-    const sortRef = useRef<HTMLDivElement>(null);
+  const selectOption = (item: SortOption) => {
+    dispatch(setSort(item.id));
+    setOpen(false);
+  };
 
-    const [open, setOpen] = useState(false);
-    const label = list.find((item) => item.id === sort)?.title ?? list[0].title;
-
-    const onClickListItem = (item: SortOption) => {
-        dispatch(setSort(item.id));
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
         setOpen(false);
-    }
+      }
+    };
+    document.body.addEventListener("click", handleClickOutside);
+    return () => document.body.removeEventListener("click", handleClickOutside);
+  }, []);
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
-                setOpen(false);
-            }
-        };
-
-        document.body.addEventListener("click", handleClickOutside);
-
-        return () => document.body.removeEventListener("click", handleClickOutside);
-    }, [])
-
-    return (
-        <div ref={sortRef} className={style.sort}>
-            <div className={style.sortLabel}>
-                <svg
-                    width="10"
-                    height="6"
-                    viewBox="0 0 10 6"
-                    fill="none"
-                >
-                    <path
-                        d="M10 5C10 5.16927..."
-                        fill="#2C2C2C"
-                    />
-                </svg>
-
-                <b>Сортировка:</b>
-                <span onClick={() => setOpen(!open)}>{label}</span>
-            </div>
-
-            {open && (
-                <div className={style.popup}>
-                    <ul className={style.list}>
-                        {
-                            list.map((item) => (
-                                <li
-                                    key={item.id}
-                                    onClick={() => onClickListItem(item)}
-                                    className={`${style.item} ${sort === item.id ? style.active : ""}`}>
-                                    {item.title}
-                                </li>
-                            ))
-                        }
-                    </ul>
-                </div>
-            )}
+  return (
+    <div ref={sortRef} className={styles.sort}
+      onKeyDown={(event) => { if (event.key === "Escape") setOpen(false); }}>
+      <button type="button" className={styles.sortLabel}
+        aria-expanded={open} aria-label={`Сортировка: ${label}, ${sort.startsWith("-") ? "по убыванию" : "по возрастанию"}`}
+        onClick={() => setOpen(!open)}>
+        <SlidersHorizontal size={18} aria-hidden="true" />
+        {label}
+        <DirectionIcon size={16} aria-hidden="true" />
+      </button>
+      {open && (
+        <div className={styles.popup}>
+          <ul className={styles.list}>
+            {options.map((item) => (
+              <li key={item.id}>
+                <button type="button"
+                  className={`${styles.item} ${sort === item.id ? styles.active : ""}`}
+                  aria-pressed={sort === item.id}
+                  aria-label={`${item.title}, ${item.id.startsWith("-") ? "по убыванию" : "по возрастанию"}`}
+                  onClick={() => selectOption(item)}>
+                  {item.title}
+                  {item.id.startsWith("-") ? <ArrowDown size={16} aria-hidden="true" /> : <ArrowUp size={16} aria-hidden="true" />}
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
-    )
+      )}
+    </div>
+  );
 }

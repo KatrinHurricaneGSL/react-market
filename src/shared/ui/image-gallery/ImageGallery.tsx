@@ -30,7 +30,7 @@ export const ImageGallery = ({ images }: Props) => {
         onSwiper={setThumbsSwiper}
         direction="horizontal"
         breakpoints={{
-          601: { direction: "vertical", mousewheel: { forceToAxis: true } },
+          993: { direction: "vertical", mousewheel: { forceToAxis: true } },
         }}
         slidesPerView="auto"
         spaceBetween={8}

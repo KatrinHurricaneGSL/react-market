@@ -102,12 +102,8 @@
   visibility: hidden;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 992px) {
   .layout {
-    --gallery-height: 280px;
-    --thumbnail-size: 52px;
-    --nav-width: 24px;
-
     grid-template-columns: minmax(0, 1fr);
     gap: 8px;
   }
@@ -125,5 +121,13 @@
 
   .thumbnailSlide.thumbnailSlide {
     width: var(--thumbnail-size);
+  }
+}
+
+@media (max-width: 600px) {
+  .layout {
+    --gallery-height: 280px;
+    --thumbnail-size: 52px;
+    --nav-width: 24px;
   }
 }

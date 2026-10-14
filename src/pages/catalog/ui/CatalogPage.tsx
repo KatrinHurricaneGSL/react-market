@@ -83,16 +83,17 @@ export const CatalogPage = () => {
     <>
       <div className={styles.contentTop}>
         <Categories value={categoryId} onChangeCategory={onClickCategory} />
-
-        <Sort />
       </div>
 
       <Title tag="h2" className={styles.title}>
         {activeCategory?.title || "Все товары"}
       </Title>
 
-      <div className={styles.search}>
-        <Search />
+      <div className={styles.controls}>
+        <div className={styles.search}>
+          <Search />
+        </div>
+        <Sort />
       </div>
 
       <ContentItems>
