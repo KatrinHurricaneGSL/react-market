@@ -63,7 +63,17 @@ export function Header({ onResetSearch }: Props) {
           </Button>
 
           <Button to="/cart" className={styles.cartButton}
-            icon={<><ShoppingCart /><span>{totalCartItems}</span></>}
+            icon={
+              <>
+                <ShoppingCart />
+                <span className={styles.cartCount}>{totalCartItems}</span>
+                {totalCartItems > 0 && (
+                  <span className={`${styles.badge} ${styles.cartBadge}`}>
+                    {totalCartItems > 99 ? "99+" : totalCartItems}
+                  </span>
+                )}
+              </>
+            }
             iconPosition="end" iconDivider aria-label={`Корзина: ${totalCartItems} товаров`}>
             <span className={styles.cartTotal}>
               {totalPrice === null ? "—" : formatPrice(totalPrice)}
