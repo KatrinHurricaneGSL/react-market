@@ -10,6 +10,7 @@ import {
 import { Heart, ShoppingBasket, ShoppingCart } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/shared/store";
 import { loadCartProducts, selectTotalCartItems, selectTotalPrice } from "@/entities/cart";
+import { formatPrice } from "@/shared/lib/format-price";
 
 export function Header() {
   const dispatch = useAppDispatch();
@@ -62,7 +63,7 @@ export function Header() {
           </Link>
 
           <Button to="/cart" variants={["cart"]}>
-            <span>{totalPrice === null ? "—" : totalPrice} ₽</span>
+            <span>{totalPrice === null ? "—" : formatPrice(totalPrice)}</span>
 
             <div className={styles.cartDelimiter}></div>
 

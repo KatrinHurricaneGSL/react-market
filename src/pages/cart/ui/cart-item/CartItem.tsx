@@ -9,6 +9,7 @@ import {
 import { Minus, Plus, X } from "lucide-react";
 import { useAppDispatch } from "@/shared/store";
 import type { ProductType } from "@/entities/product";
+import { formatPrice } from "@/shared/lib/format-price";
 
 interface CartItemProps {
   product: CartItem;
@@ -75,7 +76,7 @@ export function CartItem({ product, onPreview }: CartItemProps) {
           </Button>
         </div>
         <div className={styles.itemPrice}>
-          <b>{product.price * product.count} ₽</b>
+          <b>{formatPrice(product.price * product.count)}</b>
         </div>
         <div className={styles.itemRemove}>
           <Button

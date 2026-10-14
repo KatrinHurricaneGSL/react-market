@@ -16,6 +16,7 @@ import { NotFoundBlock } from "@/shared/ui/not-found-block";
 import { Link } from "react-router";
 import { openProductPreview } from "@/features/product-preview";
 import { Alert } from "@/shared/ui/alert";
+import { formatPrice } from "@/shared/lib/format-price";
 
 export const CartPage = () => {
   const { items: entries, products, isLoading, error } = useAppSelector((state) => state.cart);
@@ -90,7 +91,7 @@ export const CartPage = () => {
             Всего товаров: <b>{totalItems} шт.</b>
           </span>
           <span>
-            Сумма заказа: <b>{totalPrice === null ? "Недоступна" : `${totalPrice} ₽`}</b>
+            Сумма заказа: <b>{totalPrice === null ? "Недоступна" : formatPrice(totalPrice)}</b>
           </span>
         </div>
         <div className={styles.bottomButtons}>

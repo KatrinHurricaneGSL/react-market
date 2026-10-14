@@ -10,6 +10,7 @@ import { useState, type ReactNode } from "react";
 import { ProductCharacteristics } from "./ProductCharacteristics";
 import { DeliveryAndPayment } from "./DeliveryAndPayment";
 import type { ProductType } from "@/entities/product";
+import { formatPrice } from "@/shared/lib/format-price";
 
 type TabId = "description" | "characteristics" | "delivery";
 type TabItem = {
@@ -107,7 +108,7 @@ export const ProductPreview = ({ product, onClose }: Props) => {
 
             <div className={styles.infoRows}>
               <h2 className={styles.title}>{product.title}</h2>
-              <div className={styles.price}>{product.price}</div>
+              <div className={styles.price}>{formatPrice(product.price)}</div>
               <div className={styles.caption}>{product.caption}</div>
               <div className={styles.checkout}>
                 <AddToCartButton product={product} />

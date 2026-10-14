@@ -5,6 +5,7 @@ import { Heart, Star } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/shared/store";
 import clsx from "clsx";
 import { addFavorite } from "@/entities/favorites";
+import { formatPrice } from "@/shared/lib/format-price";
 
 interface Props {
   product: ProductType;
@@ -61,7 +62,7 @@ export function ProductBlock({ product, actions, onPreview }: Props) {
         </h4>
 
         <div className={styles.footer}>
-          <div className={styles.price}>{price} ₽</div>
+          <div className={styles.price}>{formatPrice(price)}</div>
 
           {actions && (
             <div onClick={(event) => event.stopPropagation()}>{actions}</div>
