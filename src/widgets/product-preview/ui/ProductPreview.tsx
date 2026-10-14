@@ -9,25 +9,7 @@ import { AddToCartButton } from "@/features/add-to-cart";
 import { useState, type ReactNode } from "react";
 import { ProductCharacteristics } from "./ProductCharacteristics";
 import { DeliveryAndPayment } from "./DeliveryAndPayment";
-
-const testProduct = {
-  id: 1,
-  title: "Наушники поро макс",
-  imageUrl: "",
-  price: 3034,
-  rating: 3,
-  category: 1,
-
-  // Новые поля
-  caption:
-    "Комфортные беспроводные наушники с активным шумоподавлением, чистым звуком и длительным временем работы.",
-  description:
-    "Стильные и удобные беспроводные наушники с активным шумоподавлением. Подходят для работы, а также длительное время автономной работы",
-  characteristics: [
-    { title: "Размер", value: "24см" },
-    { title: "Звук", value: "Dolby Digital" },
-  ],
-};
+import type { ProductType } from "@/entities/product";
 
 type TabId = "description" | "characteristics" | "delivery";
 type TabItem = {
@@ -40,42 +22,40 @@ type TabContent = {
   content: ReactNode;
 };
 
+type Props = {
+  product?: ProductType;
+  onClose?: () => void;
+};
+
 const TABS: TabItem[] = [
   { id: "description", title: "Описание" },
   { id: "characteristics", title: "Характеристики" },
   { id: "delivery", title: "Доставка и оплата" },
 ];
 
-export const ProductPreview = () => {
+export const ProductPreview = ({ product, onClose }: Props) => {
   const [activeTab, setActiveTab] = useState<TabId>("description");
 
-  const {
-    id,
-    title,
-    imageUrl,
-    price,
-    rating,
-    category,
-    caption,
-    characteristics,
-    description,
-  } = testProduct;
   const dispath = useAppDispatch();
 
   const favoriteItem = useAppSelector((state) =>
-    state.favorite.items.find((item) => item.id === id),
+    state.favorite.items.find((item) => item.id === product?.id),
   );
 
-  // Контент табов
+  if (!product) return null;
 
   const tabsContent: TabContent[] = [
     {
       tab: "description",
-      content: <p>{description}</p>,
+      content: <p>{product.description}</p>,
     },
     {
       tab: "characteristics",
-      content: <ProductCharacteristics characteristics={characteristics} />,
+      content: (
+        <ProductCharacteristics
+          characteristics={product.characteristics || []}
+        />
+      ),
     },
     {
       tab: "delivery",
@@ -83,18 +63,30 @@ export const ProductPreview = () => {
     },
   ];
 
+  const handleAddToFavorite = () => {
+    dispath(addFavorite(product));
+  };
+
+  const handleClose = () => {
+    setActiveTab("description");
+    onClose?.();
+  };
+
   return (
-    <Modal open classNames={{ body: styles.previewModal }}>
+    <Modal
+      open
+      classNames={{ body: styles.previewModal }}
+      onClose={handleClose}
+    >
       <div className={styles.preview}>
         <div className={styles.content}>
           <div className={styles.gallery}>
             <ImageGallery
-              images={[
-                {
-                  original: "/images/electric_brush.jpg",
-                  thumbnail: "/images/electric_brush.jpg",
-                },
-              ]}
+              images={
+                product.images?.length
+                  ? product.images
+                  : [{ original: product.imageUrl, thumbnail: product.imageUrl }]
+              }
             />
           </div>
 
@@ -102,7 +94,7 @@ export const ProductPreview = () => {
             <div className={styles.infoHeader}>
               <div className={styles.ratingBlock}>
                 <Star />
-                <span className={styles.rating}>{rating}</span>
+                <span className={styles.rating}>{product.rating ?? 0}</span>
               </div>
 
               <button
@@ -111,32 +103,21 @@ export const ProductPreview = () => {
                 })}
                 aria-label={
                   favoriteItem?.isFavorite
-                    ? `Удалить ${title} из избранного`
-                    : `Добавить ${title} в избранное`
+                    ? `Удалить ${product.title} из избранного`
+                    : `Добавить ${product.title} в избранное`
                 }
-                onClick={() =>
-                  dispath(
-                    addFavorite({
-                      id,
-                      title,
-                      imageUrl,
-                      price,
-                      rating,
-                      category,
-                    }),
-                  )
-                }
+                onClick={handleAddToFavorite}
               >
                 <Heart />
               </button>
             </div>
 
             <div className={styles.infoRows}>
-              <h2 className={styles.title}>{title}</h2>
-              <div className={styles.price}>{price}</div>
-              <div className={styles.caption}>{caption}</div>
+              <h2 className={styles.title}>{product.title}</h2>
+              <div className={styles.price}>{product.price}</div>
+              <div className={styles.caption}>{product.caption}</div>
               <div className={styles.checkout}>
-                <AddToCartButton product={testProduct} />
+                <AddToCartButton product={product} />
               </div>
             </div>
           </div>

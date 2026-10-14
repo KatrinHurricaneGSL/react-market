@@ -21,7 +21,7 @@ export const FavoritePage = () => {
             {favoriteItems.map((product) => (
               <ProductBlock
                 key={product.id}
-                {...product}
+                product={product}
                 actions={<AddToCartButton product={product} />}
               />
             ))}

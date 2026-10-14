@@ -92,7 +92,7 @@ export const CatalogPage = () => {
           : items.data.map((product) => (
               <ProductBlock
                 key={product.id}
-                {...product}
+                product={product}
                 actions={<AddToCartButton product={product} />}
               />
             ))}

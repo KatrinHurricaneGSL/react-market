@@ -1,12 +1,8 @@
 import Gallery from "react-image-gallery";
+import type { ImageSlide } from "@/shared/types";
 import "react-image-gallery/styles/image-gallery.css";
 
 import styles from "./ImageGallery.module.css";
-
-type ImageSlide = {
-  original: string;
-  thumbnail: string;
-};
 
 type Props = {
   images: ImageSlide[];

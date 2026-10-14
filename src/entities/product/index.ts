@@ -1,5 +1,9 @@
-export { getProducts } from "./api/getProducts"
-export { categories } from "./model/categories"
-export type { ProductType, PaginationData } from "./model/types"
-export { ProductBlock } from "./ui/product-card/ProductBlock"
-export { Skeleton } from "./ui/skeleton/Skeleton"
+export { getProducts } from "./api/getProducts";
+export { categories } from "./model/categories";
+export type {
+  ProductType,
+  PaginationData,
+  ProductCharacteristic,
+} from "./model/types";
+export { ProductBlock } from "./ui/product-card/ProductBlock";
+export { Skeleton } from "./ui/skeleton/Skeleton";

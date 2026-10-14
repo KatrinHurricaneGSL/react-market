@@ -6,24 +6,26 @@ import { useAppDispatch, useAppSelector } from "@/shared/store";
 import clsx from "clsx";
 import { addFavorite } from "@/entities/favorites";
 
-interface Props extends ProductType {
+interface Props {
+  product: ProductType;
   actions?: ReactNode;
 }
 
-export function ProductBlock({
-  id,
-  title,
-  price,
-  imageUrl,
-  actions,
-  rating,
-  category,
-}: Props) {
+export function ProductBlock({ product, actions }: Props) {
+  const { id, rating, imageUrl, title, price } = product;
+
   const dispath = useAppDispatch();
 
   const favoriteItem = useAppSelector((state) =>
     state.favorite.items.find((item) => item.id === id),
   );
+
+  const handleFavoriteButtonClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    event.stopPropagation();
+    dispath(addFavorite(product));
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -44,18 +46,7 @@ export function ProductBlock({
               ? `Удалить ${title} из избранного`
               : `Добавить ${title} в избранное`
           }
-          onClick={() =>
-            dispath(
-              addFavorite({
-                id,
-                title,
-                imageUrl,
-                price,
-                rating,
-                category,
-              }),
-            )
-          }
+          onClick={handleFavoriteButtonClick}
         >
           <Heart />
         </button>
@@ -65,7 +56,9 @@ export function ProductBlock({
         <div className={styles.footer}>
           <div className={styles.price}>{price} ₽</div>
 
-          {actions}
+          {actions && (
+            <div onClick={(event) => event.stopPropagation()}>{actions}</div>
+          )}
         </div>
       </div>
     </div>

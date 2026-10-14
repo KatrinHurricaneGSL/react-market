@@ -1,12 +1,8 @@
+import type { ProductCharacteristic } from "@/entities/product";
 import styles from "./ProductCharacteristics.module.css";
 
-interface Characteristic {
-  title: string;
-  value: string;
-}
-
 interface ProductCharacteristicsProps {
-  characteristics: Characteristic[];
+  characteristics: ProductCharacteristic[];
 }
 
 export const ProductCharacteristics = ({

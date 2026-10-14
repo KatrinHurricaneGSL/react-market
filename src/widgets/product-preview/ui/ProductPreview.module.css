@@ -7,6 +7,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
+  margin-bottom: 20px;
 }
 
 .infoHeader {
@@ -48,6 +49,21 @@
   }
 }
 
+.infoRows {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.title {
+    font-size: 28px;
+}
+
+.price {
+    font-size: 28px;
+    font-weight: 600;
+}
+
 /* Табы */
 .tabItems {
   position: relative;
@@ -77,6 +93,7 @@
   &.tabActive {
     color: var(--accent-color);
     border-bottom-color: var(--accent-color);
+    font-weight: 600;
   }
 }
 
