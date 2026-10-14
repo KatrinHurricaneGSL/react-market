@@ -1,5 +1,5 @@
 ﻿.button {
-    --button-height: 44px;
+    --button-height: var(--button-default-height);
     --button-icon-size: 22px;
     display: inline-flex;
     align-items: center;
@@ -127,7 +127,6 @@
 
 @media (max-width: 768px) {
     .button {
-        --button-height: 40px;
         --button-icon-size: 20px;
         gap: 8px;
         padding: 8px 16px;
@@ -140,7 +139,11 @@
 }
 
 @media (max-width: 480px) {
-    .button { gap: 6px; padding-inline: 12px; }
+    .button {
+        --button-icon-size: 18px;
+        gap: 6px;
+        padding: 7px 12px;
+    }
     .iconOnly,
     .circle,
     .ghost { padding: 0; }

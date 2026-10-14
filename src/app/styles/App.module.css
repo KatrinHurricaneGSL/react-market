@@ -22,3 +22,20 @@
         margin-top: 15px;
     }
 }
+
+@media (max-width: 768px) {
+    .content {
+        padding: 24px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: auto;
+        margin-inline: 12px;
+    }
+
+    .content {
+        padding: 16px 0;
+    }
+}

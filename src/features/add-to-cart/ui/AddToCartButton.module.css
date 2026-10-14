@@ -1,5 +1,5 @@
 .counter {
-  --cart-button-size: 44px;
+  --cart-button-size: var(--button-default-height);
   display: flex;
   align-items: center;
   user-select: none;
@@ -13,6 +13,7 @@
   min-width: 0;
   padding: 0;
   border: 1px solid transparent;
+  box-sizing: border-box;
 
   background-color: var(--accent-color);
   color: #fff;
@@ -61,5 +62,19 @@
 }
 
 @media (max-width: 768px) {
-  .counter { --cart-button-size: 40px; }
+  .quantity {
+    font-size: 16px;
+  }
+
+  .button svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button svg {
+    width: 18px;
+    height: 18px;
+  }
 }

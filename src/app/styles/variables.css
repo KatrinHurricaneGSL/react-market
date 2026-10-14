@@ -1,4 +1,6 @@
 :root {
+    --button-default-height: 44px;
+    --button-default-height: 44px;
     --button-block-padding: clamp(8px, 1.2vw, 10px);
     --button-inline-padding: clamp(12px, 2vw, 20px);
     --button-font-size: clamp(14px, 1.5vw, 16px);
@@ -7,4 +9,28 @@
     --button-line-height: 1.25;
 
     --accent-color: #f71923;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --button-default-height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --button-default-height: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --button-default-height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --button-default-height: 36px;
+    }
 }

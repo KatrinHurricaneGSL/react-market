@@ -58,6 +58,8 @@ export const AddToCartButton = ({ product }: Props) => {
     return (
       <div className={styles.counter}>
         <button
+          type="button"
+          aria-label="Уменьшить количество"
           className={clsx(styles.button, styles.minusButton)}
           onClick={handleDecrement}
         >
@@ -65,6 +67,8 @@ export const AddToCartButton = ({ product }: Props) => {
         </button>
         <span className={styles.quantity}>{quantity}</span>
         <button
+          type="button"
+          aria-label="Увеличить количество"
           className={clsx(styles.button, styles.plusButton)}
           onClick={handleIncrement}
         >

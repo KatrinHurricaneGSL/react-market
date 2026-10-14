@@ -4,13 +4,14 @@
 
 .list {
   display: flex;
+  gap: 10px;
 }
 
 .item {
   background: #f9f9f9;
   padding: 13px 30px;
   border-radius: 30px;
-  margin-right: 10px;
+  flex-shrink: 0;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.1s ease-in-out;
@@ -39,7 +40,32 @@
     margin-top: 30px;
   }
 
-  .categories ul {
-    width: 785px;
+}
+
+@media (max-width: 768px) {
+  .categories {
+    margin-top: 0;
+  }
+
+  .list {
+    gap: 8px;
+  }
+
+  .item {
+    padding: 10px 20px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .list {
+    gap: 6px;
+  }
+
+  .item {
+    padding: 8px 14px;
+    font-size: 13px;
+    line-height: 18px;
   }
 }

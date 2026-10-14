@@ -3,3 +3,18 @@
     font-size: 38px;
     font-weight: 800;
 }
+
+@media (max-width: 768px) {
+    .title {
+        margin-bottom: 28px;
+        font-size: 30px;
+        line-height: 1.2;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+}
