@@ -16,18 +16,23 @@ import { useAppDispatch, useAppSelector } from "@/shared/store";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
+  const [catalogResetKey, setCatalogResetKey] = useState(0);
   const product = useAppSelector(selectPreviewProduct);
   const dispatch = useAppDispatch();
   const handleClosePreview = () => dispatch(closeProductPreview());
+  const handleResetSearch = () => {
+    setSearchValue("");
+    setCatalogResetKey((key) => key + 1);
+  };
 
   return (
     <div className={styles.wrapper}>
       <SearchContext.Provider value={{ searchValue, setSearchValue }}>
-        <Header />
+        <Header onResetSearch={handleResetSearch} />
         <div className={styles.content}>
           <div className={styles.container}>
             <Routes>
-              <Route path="/" element={<CatalogPage />} />
+              <Route path="/" element={<CatalogPage key={catalogResetKey} />} />
               <Route path="/cart" element={<CartPage />} />
               <Route path="/favorite" element={<FavoritePage />} />
               <Route path="*" element={<NotFoundPage />} />

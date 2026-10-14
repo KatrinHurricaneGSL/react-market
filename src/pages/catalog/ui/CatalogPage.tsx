@@ -8,7 +8,7 @@ import {
   categories,
 } from "@/entities/product";
 import type { PaginationData } from "@/entities/product";
-import { Categories, Sort } from "@/features/catalog-controls";
+import { Categories, Search, Sort } from "@/features/catalog-controls";
 import { AddToCartButton } from "@/features/add-to-cart";
 import { ContentItems } from "@/shared/ui/content-items";
 import { Pagination } from "@/shared/ui/pagination";
@@ -87,7 +87,13 @@ export const CatalogPage = () => {
         <Sort />
       </div>
 
-      <Title tag="h2">{activeCategory?.title || "Все товары"}</Title>
+      <Title tag="h2" className={styles.title}>
+        {activeCategory?.title || "Все товары"}
+      </Title>
+
+      <div className={styles.search}>
+        <Search />
+      </div>
 
       <ContentItems>
         {isLoading

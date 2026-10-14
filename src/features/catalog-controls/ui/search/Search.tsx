@@ -48,7 +48,8 @@ export function Search() {
       <input
         ref={inputRef}
         className={styles.input}
-        placeholder="Поиск по названию..."
+        placeholder="Фильтровать по названию"
+        aria-label="Фильтровать товары по названию"
         value={inputValue}
         onChange={onInputChange}
       />

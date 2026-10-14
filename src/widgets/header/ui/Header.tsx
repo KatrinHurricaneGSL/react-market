@@ -1,10 +1,8 @@
 import styles from "./Header.module.css";
-import { useContext, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useLocation } from "react-router";
 import { Button } from "@/shared/ui/button";
 import {
-  Search,
-  SearchContext,
   resetFilters,
 } from "@/features/catalog-controls";
 import { Heart, ShoppingBasket, ShoppingCart } from "lucide-react";
@@ -12,10 +10,12 @@ import { useAppDispatch, useAppSelector } from "@/shared/store";
 import { loadCartProducts, selectTotalCartItems, selectTotalPrice } from "@/entities/cart";
 import { formatPrice } from "@/shared/lib/format-price";
 
-export function Header() {
+type Props = {
+  onResetSearch: () => void;
+};
+
+export function Header({ onResetSearch }: Props) {
   const dispatch = useAppDispatch();
-  const { setSearchValue } = useContext(SearchContext);
-  const [searchResetKey, setSearchResetKey] = useState(0);
   const totalPrice = useAppSelector(selectTotalPrice);
   const cartItems = useAppSelector((state) => state.cart.items);
   const { pathname } = useLocation();
@@ -28,8 +28,7 @@ export function Header() {
 
   const handleLogoClick = () => {
     dispatch(resetFilters());
-    setSearchValue("");
-    setSearchResetKey((key) => key + 1);
+    onResetSearch();
   };
 
   const favoriteCount = useAppSelector((state) =>
@@ -48,8 +47,6 @@ export function Header() {
             </div>
           </div>
         </Link>
-
-        <Search key={searchResetKey} />
 
         <div className={styles.headerCart}>
           <Link to="/favorite" className={styles.favoriteButton}>
