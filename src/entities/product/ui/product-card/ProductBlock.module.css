@@ -135,11 +135,24 @@
   }
 
   .title {
-    min-height: 60px;
+    min-height: 40px;
+    height: 40px;
     margin-bottom: 12px;
     font-size: 16px;
     line-height: 20px;
     overflow-wrap: anywhere;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .previewButton {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    width: 100%;
+    overflow: hidden;
   }
 
   .footer {

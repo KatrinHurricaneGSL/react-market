@@ -1,4 +1,5 @@
 import ResponsivePagination from 'react-responsive-pagination';
+import { dropEllipsis } from 'react-responsive-pagination/narrowBehaviour';
 import 'react-responsive-pagination/themes/classic.css';
 
 import styles from "./Pagination.module.css"
@@ -16,6 +17,7 @@ export function Pagination({ current, total, onPageChange }: PaginationProps) {
                 current={current}
                 total={total}
                 onPageChange={onPageChange}
+                narrowBehaviour={dropEllipsis}
             />
         </div>
     )

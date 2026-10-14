@@ -1,7 +1,18 @@
 .pagination {
+    width: 100%;
+    min-width: 0;
     --pagination-color: #232323;
     --pagination-hover-color: #232323;
     --pagination-active-color: #f71923;
     --pagination-active-bg: #fff;
     --pagination-active-border-color: #f71923;
+}
+
+@media (max-width: 480px) {
+    .pagination {
+        --pagination-font-size: 14px;
+        --pagination-padding-x: 9px;
+        --pagination-padding-y: 7px;
+        --pagination-item-margin-x: 2px;
+    }
 }
