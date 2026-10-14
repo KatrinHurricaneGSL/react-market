@@ -1,8 +1,6 @@
-export interface CartItem {
-    id: number;
-    title: string;
-    imageUrl: string;
-    price: number;
+import type { ProductType } from "@/entities/product";
+
+export interface CartItem extends ProductType {
     count: number;
 }
 

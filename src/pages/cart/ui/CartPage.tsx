@@ -11,6 +11,7 @@ import {
 import { Trash } from "lucide-react";
 import { NotFoundBlock } from "@/shared/ui/not-found-block";
 import { Link } from "react-router";
+import { openProductPreview } from "@/features/product-preview";
 
 export const CartPage = () => {
   const { items } = useAppSelector((state) => state.cart);
@@ -50,7 +51,11 @@ export const CartPage = () => {
 
       <ContentItems variant="list">
         {items.map((item) => (
-          <CartItem key={item.id} product={item} />
+          <CartItem
+            key={item.id}
+            product={item}
+            onPreview={(product) => dispatch(openProductPreview(product))}
+          />
         ))}
       </ContentItems>
 

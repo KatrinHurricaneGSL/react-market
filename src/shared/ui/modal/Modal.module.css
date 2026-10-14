@@ -1,90 +1,91 @@
 .modal {
-    position: fixed;
-    inset: 0;
+  position: fixed;
+  inset: 0;
 
-    z-index: 9999;
+  z-index: 9999;
 
-    padding: 20px;
+  padding: 20px;
 
-    overflow-y: auto;
+  overflow-y: auto;
 
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-    background-color: black;
-    opacity: 0.7;
-    pointer-events: none;
+  background-color: black;
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 .body {
-    position: relative;
+  position: relative;
 
-    width: 40%;
-    min-width: 400px;
-    margin: auto 0;
+  width: 40%;
+  min-width: 400px;
+  margin: auto 0;
 
-    background-color: white;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    line-height: 22px;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  line-height: 22px;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 4px;
-    padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  padding: 12px;
 }
 
 .title {
-    font-weight: 500;
-    font-size: 18px;
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .closeBtn {
-    padding: 0;
-    border-radius: 50%;
-    border: none;
-    background: none;
-    width: 35px;
-    height: 35px;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
 
-    svg {
-        stroke: #838383;
-    }
+  svg {
+    stroke: #838383;
+  }
 }
 
 .content {
-    padding: 0 18px;
+  padding: 0 18px;
 }
 
 .footer {
-    display: flex;
-    gap: 12px;
-    justify-content: end;
-    padding: 12px;
+  display: flex;
+  gap: 12px;
+  justify-content: end;
+  padding: 12px;
 }
 
 @media (max-width: 468px) {
-    .title {
-        font-size: 16px;
-    }
+  .title {
+    font-size: 16px;
+  }
 
-    .content {
-        font-size: 14px;
-    }
+  .content {
+    font-size: 14px;
+  }
 
-    .footer button {
-        padding: 8px 12px;
-    }
+  .footer button {
+    padding: 8px 12px;
+  }
 }

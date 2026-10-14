@@ -16,8 +16,11 @@ import { Pagination } from "@/shared/ui/pagination";
 import { useCatalogQuery } from "../model/useCatalogQuery";
 import { Title } from "@/shared/ui/typography";
 import { NotFoundBlock } from "@/shared/ui/not-found-block";
+import { openProductPreview } from "@/features/product-preview";
+import { useAppDispatch } from "@/shared/store";
 
 export const CatalogPage = () => {
+  const dispatch = useAppDispatch();
   const {
     categoryId,
     currentPage,
@@ -93,6 +96,7 @@ export const CatalogPage = () => {
               <ProductBlock
                 key={product.id}
                 product={product}
+                onPreview={(product) => dispatch(openProductPreview(product))}
                 actions={<AddToCartButton product={product} />}
               />
             ))}

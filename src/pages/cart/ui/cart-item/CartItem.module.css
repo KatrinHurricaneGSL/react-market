@@ -18,6 +18,18 @@
 
 .itemProduct {
   min-width: 0;
+  cursor: pointer;
+}
+
+.previewButton {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  cursor: pointer;
 }
 
 .itemImage {

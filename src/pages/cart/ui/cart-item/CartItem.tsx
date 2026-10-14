@@ -8,12 +8,14 @@ import {
 } from "@/entities/cart";
 import { Minus, Plus, X } from "lucide-react";
 import { useAppDispatch } from "@/shared/store";
+import type { ProductType } from "@/entities/product";
 
 interface CartItemProps {
   product: CartItem;
+  onPreview: (product: ProductType) => void;
 }
 
-export function CartItem({ product }: CartItemProps) {
+export function CartItem({ product, onPreview }: CartItemProps) {
   const dispatch = useAppDispatch();
 
   const handleDeleteItem = () => {
@@ -41,12 +43,16 @@ export function CartItem({ product }: CartItemProps) {
 
   return (
     <article className={styles.item}>
-      <div className={styles.itemProduct}>
+      <div className={styles.itemProduct} onClick={() => onPreview(product)}>
         <div className={styles.itemImage}>
           <img src={product.imageUrl} alt={product.title} />
         </div>
         <div className={styles.itemInfo}>
-          <h3>{product.title}</h3>
+          <h3>
+            <button type="button" className={styles.previewButton} aria-haspopup="dialog">
+              {product.title}
+            </button>
+          </h3>
         </div>
       </div>
 

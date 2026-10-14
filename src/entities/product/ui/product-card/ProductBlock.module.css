@@ -69,6 +69,16 @@
   letter-spacing: 0.01em;
 }
 
+.previewButton {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
 .selector {
   display: flex;
   flex-direction: column;

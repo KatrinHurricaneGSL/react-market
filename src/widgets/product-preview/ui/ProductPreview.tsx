@@ -23,8 +23,8 @@ type TabContent = {
 };
 
 type Props = {
-  product?: ProductType;
-  onClose?: () => void;
+  product: ProductType;
+  onClose: () => void;
 };
 
 const TABS: TabItem[] = [
@@ -39,10 +39,8 @@ export const ProductPreview = ({ product, onClose }: Props) => {
   const dispath = useAppDispatch();
 
   const favoriteItem = useAppSelector((state) =>
-    state.favorite.items.find((item) => item.id === product?.id),
+    state.favorite.items.find((item) => item.id === product.id),
   );
-
-  if (!product) return null;
 
   const tabsContent: TabContent[] = [
     {
@@ -67,16 +65,11 @@ export const ProductPreview = ({ product, onClose }: Props) => {
     dispath(addFavorite(product));
   };
 
-  const handleClose = () => {
-    setActiveTab("description");
-    onClose?.();
-  };
-
   return (
     <Modal
       open
       classNames={{ body: styles.previewModal }}
-      onClose={handleClose}
+      onClose={onClose}
     >
       <div className={styles.preview}>
         <div className={styles.content}>

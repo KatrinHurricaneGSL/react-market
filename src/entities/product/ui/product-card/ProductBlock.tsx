@@ -9,9 +9,10 @@ import { addFavorite } from "@/entities/favorites";
 interface Props {
   product: ProductType;
   actions?: ReactNode;
+  onPreview?: (product: ProductType) => void;
 }
 
-export function ProductBlock({ product, actions }: Props) {
+export function ProductBlock({ product, actions, onPreview }: Props) {
   const { id, rating, imageUrl, title, price } = product;
 
   const dispath = useAppDispatch();
@@ -29,7 +30,7 @@ export function ProductBlock({ product, actions }: Props) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.card}>
+      <div className={styles.card} onClick={() => onPreview?.(product)}>
         <div className={styles.ratingBlock}>
           <Star />
           <span className={styles.rating}>{rating}</span>
@@ -51,7 +52,13 @@ export function ProductBlock({ product, actions }: Props) {
           <Heart />
         </button>
 
-        <h4 className={styles.title}>{title}</h4>
+        <h4 className={styles.title}>
+          {onPreview ? (
+            <button type="button" className={styles.previewButton} aria-haspopup="dialog">
+              {title}
+            </button>
+          ) : title}
+        </h4>
 
         <div className={styles.footer}>
           <div className={styles.price}>{price} ₽</div>

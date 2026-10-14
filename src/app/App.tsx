@@ -11,9 +11,13 @@ import { NotFoundPage } from "@/pages/not-found";
 import { SearchContext } from "@/features/catalog-controls";
 import { FavoritePage } from "@/pages/favorite";
 import { ProductPreview } from "@/widgets/product-preview";
+import { closeProductPreview, selectPreviewProduct } from "@/features/product-preview";
+import { useAppDispatch, useAppSelector } from "@/shared/store";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
+  const product = useAppSelector(selectPreviewProduct);
+  const dispatch = useAppDispatch();
 
   return (
     <div className={styles.wrapper}>
@@ -31,7 +35,13 @@ function App() {
         </div>
       </SearchContext.Provider>
 
-      <ProductPreview />
+      {product && (
+        <ProductPreview
+          key={product.id}
+          product={product}
+          onClose={() => dispatch(closeProductPreview())}
+        />
+      )}
     </div>
   );
 }

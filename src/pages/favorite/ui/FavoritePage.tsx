@@ -2,11 +2,13 @@ import { Title } from "@/shared/ui/typography";
 import { ContentItems } from "@/shared/ui/content-items";
 import { ProductBlock } from "@/entities/product";
 import { AddToCartButton } from "@/features/add-to-cart";
-import { useAppSelector } from "@/shared/store";
+import { useAppDispatch, useAppSelector } from "@/shared/store";
+import { openProductPreview } from "@/features/product-preview";
 import { useMemo } from "react";
 import { NotFoundBlock } from "@/shared/ui/not-found-block";
 
 export const FavoritePage = () => {
+  const dispatch = useAppDispatch();
   const items = useAppSelector((state) => state.favorite.items);
   const favoriteItems = useMemo(() => {
     return items.filter((item) => item.isFavorite);
@@ -22,6 +24,7 @@ export const FavoritePage = () => {
               <ProductBlock
                 key={product.id}
                 product={product}
+                onPreview={(product) => dispatch(openProductPreview(product))}
                 actions={<AddToCartButton product={product} />}
               />
             ))}
