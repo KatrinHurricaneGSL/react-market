@@ -1,6 +1,6 @@
 import type { ProductType } from "@/entities/product";
 
-export interface CartItem extends ProductType {
+export interface CartItemType extends ProductType {
   count: number;
 }
 

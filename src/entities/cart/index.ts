@@ -7,5 +7,9 @@ export {
   clearProducts,
   loadCartProducts,
 } from "./model/cartSlice";
-export type { CartItem, CartEntry, CartState } from "./model/types";
-export { selectCartItems, selectTotalPrice, selectTotalCartItems } from "./model/selectors";
+export type { CartItemType, CartEntry, CartState } from "./model/types";
+export {
+  selectCartItems,
+  selectTotalPrice,
+  selectTotalCartItems,
+} from "./model/selectors";
