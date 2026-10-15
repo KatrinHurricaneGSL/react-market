@@ -22,23 +22,10 @@ export const useCatalogQuery = () => {
 
         initializationStarted.current = true;
 
-        const category = Number(
-            searchParams.get('category') ??
-            searchParams.get('category:eq'),
-        );
-
-        const page = Number(
-            searchParams.get('page') ??
-            searchParams.get('_page'),
-        );
-
-        const sort =
-            searchParams.get('sort') ??
-            searchParams.get('_sort');
-
-        const search =
-            searchParams.get('search') ??
-            searchParams.get('title:contains');
+        const category = Number(searchParams.get('category'));
+        const page = Number(searchParams.get('page'));
+        const sort = searchParams.get('sort');
+        const search = searchParams.get('search');
 
         if (Number.isInteger(category) && category >= 0) {
             dispatch(setCategotyId(category));

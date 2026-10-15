@@ -7,8 +7,11 @@ import { useMemo, useContext, useRef, useState, useEffect } from "react";
 
 import type { ChangeEvent } from "react";
 import { useSearchParams } from "react-router";
+import { useAppDispatch } from "@/shared/store";
+import { setCurrentPage } from "../../model/filterSlice";
 
 export function Search() {
+  const dispatch = useAppDispatch();
   const { setSearchValue } = useContext(SearchContext);
   const [params] = useSearchParams();
 
@@ -19,13 +22,15 @@ export function Search() {
   const debouncedSearch = useMemo(
     () =>
       debounce((value: string) => {
+        dispatch(setCurrentPage(1));
         setSearchValue(value);
       }, 250),
-    [setSearchValue],
+    [dispatch, setSearchValue],
   );
 
   const handleDeleteClick = () => {
     debouncedSearch.cancel();
+    dispatch(setCurrentPage(1));
     setSearchValue("");
     setInputValue("");
     inputRef.current?.focus();

@@ -7,14 +7,12 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "server": "npx json-server db.json"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.12.0",
     "axios": "^1.19.0",
     "clsx": "^2.1.1",
-    "json-server": "^1.0.0-beta.15",
     "lodash.debounce": "^4.0.8",
     "lucide-react": "^1.55.0",
     "react": "^19.2.6",

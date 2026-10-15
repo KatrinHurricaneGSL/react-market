@@ -1,30 +1,54 @@
-import axios from "axios"
-import type { PaginationData } from "../model/types"
+import axios from "axios";
+import type { PaginationData } from "../model/types";
+import { apiUrl } from "@/shared/api/config";
+import { normalizeProduct, type MockApiProduct } from "./normalizeProduct";
+
+const perPage = 8;
+
+async function fetchProducts(params: URLSearchParams): Promise<MockApiProduct[]> {
+    try {
+        const { data } = await axios.get<MockApiProduct[]>(`${apiUrl}/products`, { params });
+        return data;
+    } catch (error) {
+        if (axios.isAxiosError(error) && error.response?.status === 404 &&
+            (params.has("category") || params.has("title"))) {
+            return [];
+        }
+        throw error;
+    }
+}
 
 export async function getProducts(queryParams: URLSearchParams): Promise<PaginationData> {
-    const apiParams = new URLSearchParams({
-        _sort: queryParams.get("sort") ?? "-rating",
-        _page: queryParams.get("page") ?? "1",
-        _per_page: "8"
-    })
+    const filters = new URLSearchParams();
+    const categoryId = Number(queryParams.get("category"));
+    const searchValue = queryParams.get("search")?.trim();
+    const sort = queryParams.get("sort") ?? "-rating";
+    const requestedPage = Number(queryParams.get("page") ?? "1");
+    const page = Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
 
-    const categoryId = Number(queryParams.get("category"))
-    const searchValue = queryParams.get("search")?.trim()
+    if (categoryId > 0) filters.set("category", String(categoryId));
+    if (searchValue) filters.set("title", searchValue);
 
-    if (categoryId > 0) {
-        apiParams.set("category:eq", String(categoryId))
-    }
+    const params = new URLSearchParams(filters);
+    params.set("sortBy", sort.startsWith("-") ? sort.slice(1) : sort);
+    params.set("order", sort.startsWith("-") ? "desc" : "asc");
+    params.set("page", String(page));
+    params.set("limit", String(perPage));
 
-    if (searchValue) {
-        apiParams.set("title:contains", searchValue)
-    }
-
-    const response = await axios.get<PaginationData>(
-        `http://localhost:3000/products?${apiParams.toString()}`
-    )
+    const [products, matchingProducts] = await Promise.all([
+        fetchProducts(params),
+        fetchProducts(filters),
+    ]);
+    const items = matchingProducts.length;
+    const pages = Math.ceil(items / perPage);
 
     return {
-        ...response.data,
-        data: response.data.data.map((product) => ({ ...product, id: Number(product.id) })),
-    }
+        first: 1,
+        prev: page > 1 ? page - 1 : null,
+        next: page < pages ? page + 1 : null,
+        last: pages || null,
+        pages,
+        items,
+        data: products.map(normalizeProduct),
+    };
 }

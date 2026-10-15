@@ -1,15 +1,18 @@
 import axios from "axios";
 import type { ProductType } from "../model/types";
+import { apiUrl } from "@/shared/api/config";
+import { normalizeProduct, type MockApiProduct } from "./normalizeProduct";
 
 export async function getProductsByIds(ids: number[], signal?: AbortSignal): Promise<ProductType[]> {
-  if (ids.length === 0) return [];
+  const products = await Promise.all([...new Set(ids)].map(async (id) => {
+    try {
+      const { data } = await axios.get<MockApiProduct>(`${apiUrl}/products/${id}`, { signal });
+      return normalizeProduct(data);
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.status === 404) return null;
+      throw error;
+    }
+  }));
 
-  const { data } = await axios.get<ProductType[]>("http://localhost:3000/products", {
-    params: {
-      _where: JSON.stringify({ id: { in: ids.map(String) } }),
-    },
-    signal,
-  });
-
-  return data.map((product) => ({ ...product, id: Number(product.id) }));
+  return products.filter((product): product is ProductType => product !== null);
 }
