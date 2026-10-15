@@ -1,6 +1,6 @@
 import type { ProductType } from '../model/types';
 
-export type MockApiProduct = Omit<ProductType, 'id'> & { id: string };
+export type MockApiProduct = Omit<ProductType, 'id'> & { id: string | number };
 
 function resolveImageUrl(url: string): string {
   if (!import.meta.env.DEV) return url;
