@@ -19,7 +19,7 @@
 ## Технологии
 
 - React, TypeScript, Vite;
-- Redux Toolkit, React Redux;
+- Redux Toolkit;
 - React Router;
 - Axios;
 - CSS Modules;
